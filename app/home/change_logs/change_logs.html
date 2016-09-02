@@ -1,0 +1,20 @@
+<div>
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+         <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-list-alt"></i></span>
+        <span class="text1" style="color: white;">API updates 08/17 Patch</span>
+    </nav>
+    <nav style="background-color: #44B78B; height: 2%;margin: 0px;border: .5px solid #44B78B; padding: 5px;">
+
+    </nav>
+    <div style="border: 1px solid white;border-radius: 5px;background: white;padding: 10px;">
+        <ul>
+            <li>Change all request methods to POST for consistency. (Previous methods are GET to follow web development convention)</li>
+            <li>/parking/time endpoint now returns an object with a serverTime field. (All API response should now be inside a JSON object)</li>
+            <li>/user/cards response "id" changed to "cardId" (rename for clarity)</li>
+            <li>/profile/photo/{deviceId} changed to /profile/retrievePhoto (change method to POST)</li>
+            <li>/profile/photo changed to /profile/uploadPhoto (rename for clarity)</li>
+            <li>/parking/list method GET changed to POST (for consistency)</li>
+            <li>/parking/nonbookable/list method GET changed to POST (for consistency)</li>
+        </ul>
+    </div>
+</div>

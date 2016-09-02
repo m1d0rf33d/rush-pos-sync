@@ -1,0 +1,64 @@
+
+<div>
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+        <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
+        <span class="text1" style="color: white;">What's this for?</span>
+    </nav>
+    <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
+        <ul>
+            <li>API revision tracking</li>
+            <li>System logs access</li>
+            <li>Parker account control</li>
+            <li>Application change logs</li>
+        </ul>
+    </div>
+
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+        <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
+        <span class="text1" style="color: white;">API Management?</span>
+    </nav>
+    <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
+        Parkninja provides RESTful web services that clients (IOS, Android etc..) can access. Each revision will be tracked accordingly, <br/>
+        v(major change).(minor change).(bug fix) thus resulting to something like v2.0.0, this should help avoid chaos caused by constant updates. <br/>
+        You can search API details by revision or environment, if you select a specific environment the revision dropdown will automatically show which revision <br/>
+        is currently deployed on that environment. <br/><br/>
+
+        <b>Error Codes </b>- some known sites like facebook for example provides API's that always return a status 200 regardless of the result so the clients need to <br/>
+        parse the JSON response to determine what really happened to the request. Others make full use of HttpStatus codes which adds complexity for the clients. <br/>
+        Since parkninja is the best we will use the best approach, we will use HttpStatus but with moderation and sum it up to 3 scenarios.<br/>
+
+        1.) Client request is successful and fulfilled without an error. (HttpStatus.200) <br/>
+        2.) Client passed invalid request. (HttpStatus.400) <br/>
+        3.) Parkninja server encountered an error while fulfilling the request. Both handled and unhandled exceptions (HttpStatus.500). <br/><br/>
+
+        If 500 error is encountered 'errorCode' and 'message' field contains the details.
+    </div>
+
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+        <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
+        <span class="text1" style="color: white;">System Logs?</span>
+    </nav>
+    <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
+        1.) API Error - contains request failures logs from exposed API's. Format is 'error Code', 'message', 'deviceId'(who made the request).<br/>
+        2.) Paynamics Transactions - logs paynamics calls, xml being sent to paynamics, xml being received from paynamics.<br/>
+        3.) Catalina.out - tomcat server log file contains server startup up process.<br/>
+        4.) ParkninjaCore Error - Parkninja-core application error logs.<br/>
+        5.) ParkwiseCore Error - Parkwise-core error logs.<br/><br/>
+    </div>
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+        <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
+        <span class="text1" style="color: white;">Accounts?</span>
+    </nav>
+    <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
+        You can search through all the accounts registered in Parkninja just enter the email address and hit enter. <br/>
+        This will show all the account information, tickets, parking history etc. Developers can deactivate test accounts here.<br/>
+    </div>
+
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+        <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
+        <span class="text1" style="color: white;">Updates?</span>
+    </nav>
+    <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
+       You can check all the changes and updates made from the application here.
+    </div>
+</div>

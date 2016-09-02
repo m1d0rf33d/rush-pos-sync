@@ -1,0 +1,105 @@
+
+    <div>
+        <nav style="background-color: #0C3C26; height: 40px;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+            <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-fire"></i> </span> <span class="text1" style="color: white;">Parkninja API</span>
+        </nav>
+        <nav style="background-color: #44B78B;margin: 0px; height: 50px;border: .5px solid #44B78B;padding: 10px;">
+           <div class="row">
+               <div class="col-xs-1" style="padding: 5px;">
+                   <span style="font-weight:bold;color: white;margin-left: 5px;">Revision</span>
+               </div>
+               <div class="col-xs-2"  style="padding: 0px;">
+                   <select id="revision-select" style="padding: 0 0 0 20px;width: 100%;height: 100%;" (change)="revisionOnchange($event.target.value)">
+                       <option value="-1">--Select Revision--</option>
+                       <option *ngFor="let rev of revisions">{{rev}}</option>
+                   </select>
+               </div>
+
+               <div class="col-xs-2" style="text-align: right;padding: 5px;">
+                   <span style="font-weight:bold;color: white;">Environment</span>
+               </div>
+               <div class="col-xs-2" style="padding: 0px;">
+                   <select id="env-select" name="sel2" style="padding: 0 0 0 20px;width: 100%;height: 100%;" (change)="envOnChange($event.target.value)">
+                       <option value="-1">--Select Environment--</option>
+                       <option [value]="env.revision" *ngFor="let env of environments">{{env.text}}</option>
+                   </select>
+               </div>
+               <div class="col-xs-2" style="text-align: right;padding: 5px;">
+                   <span style="font-weight:bold;color: white;">Endpoint</span>
+               </div>
+               <div class="col-xs-3">
+                   <ng-select [allowClear]="true"
+                              [data]="items"
+                              [items]="items"
+                              [disabled]="disabled"
+                              (data)="refreshValue($event)"
+                              (selected)="selected($event)"
+                              (removed)="removed($event)"
+                              (typed)="typed($event)"
+                              placeholder="Select Endpoint">
+                   </ng-select>
+               </div>
+           </div>
+        </nav>
+    </div>
+    <br/>
+    <div style="width: 100%; margin-bottom: 20px;" class="container">
+        <div class="row">
+            <div class="col-xs-6">
+               <div class="row">
+                   <div class="col-xs-12" style="border: 1px solid lightgray; height: 8%; background: white; border-radius: 5px;">
+                       <span style="font-weight: bold;color: #0C3C26">Description:  </span>{{selectedApi.description}}
+                   </div>
+                   <div class="col-xs-12" style="border: 1px solid lightgray; height: 5%; background: white; border-radius: 5px;">
+                       <span style="font-weight: bold;color:#0C3C26">Method: </span>{{selectedApi.method}}
+                   </div>
+               </div>
+            </div>
+            <div class="col-xs-6" style="overflow:auto;border: 1px solid lightgray; height: 13%; background: white; border-radius: 5px;">
+                <span style="font-weight: bold;color: #0C3C26">Headers: </span>
+                <ul >
+                    <li *ngFor="let rb of selectedApi.headers">{{rb}}</li>
+                </ul>
+            </div>
+        </div>
+       <br/>
+        <div class="row">
+            <div class="col-xs-6" style="height: 25%;overflow: auto;border: 1px solid lightgray; background: white;border-radius: 5px;">
+                <span style="font-weight: bold;color: #0C3C26"> Request Body (application/json) </span>
+                <ul style="list-style: none;">
+                    <li *ngFor="let rb of selectedApi.requestBody">{{rb}}</li>
+                </ul>
+            </div>
+            <div class="col-xs-6" style="height: 25%;overflow: auto;border: 1px solid lightgray; background: white;border-radius: 5px;">
+                <span style="font-weight: bold;color: #0C3C26"> Success Response / HttpStatus.OK </span>
+                <ul style="list-style: none;">
+                    <li *ngFor="let rb of selectedApi.successResponse">{{rb}}</li>
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-6" style="height: 25%;overflow: auto;border: 1px solid lightgray; background: white;border-radius: 5px;">
+                <span style="font-weight: bold;color: #0C3C26">Additional details</span><br/>
+                {{selectedApi.additionalDetails}}
+            </div>
+            <div class="col-xs-6" style="height: 25%;overflow: auto;border: 1px solid lightgray; background: white;border-radius: 5px;">
+                <span style="font-weight: bold;color: #0C3C26"> Failure Response / HttpStatus.500 </span>
+                <ul style="list-style: none;">
+                    <li *ngFor="let rb of selectedApi.failureResponse">{{rb}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+        <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-record"></i></span>
+        <span class="text1" style="color: white;">Error Codes</span>
+    </nav>
+    <div style="padding: 10px;border: 1px solid white; background: white;overflow: auto;">
+        <li *ngFor="let errorCode of errorCodes">
+            <span style="font-weight: bold;color: #0C3C26;">error code:</span>
+            <span style="color: #0C3C26;">{{errorCode.errorCode}}</span>,
+            <span style="font-weight: bold;color: #0C3C26;">message:</span>
+            <span style="color: #0C3C26;">{{errorCode.message}}</span>
+        </li>
+    </div>

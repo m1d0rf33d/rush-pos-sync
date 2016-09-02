@@ -1,0 +1,114 @@
+[
+  {
+    "errorCode": "PN01",
+    "message": "Invalid promo code."
+  },
+  {
+    "errorCode": "PN02",
+    "message": "Customer reservation locked."
+  },
+  {
+    "errorCode": "PN03",
+    "message": "Username already used."
+  },
+  {
+    "errorCode": "PN04",
+    "message": "Email already used."
+  },
+  {
+    "errorCode": "PN05",
+    "message": "No account was found using that email."
+  },
+  {
+    "errorCode": "PN06",
+    "message": "Invalid credentials."
+  },
+  {
+    "errorCode": "PN07",
+    "message": "Invalid activation key."
+  },
+  {
+    "errorCode": "PN08",
+    "message": "Password does not match."
+  },
+  {
+    "errorCode": "PN09",
+    "message": "Email does not exist."
+  },
+  {
+    "errorCode": "PN10",
+    "message": "Code error"
+  },
+  {
+    "errorCode": "PN11",
+    "message": "Client has insufficient funds."
+  },
+  {
+    "errorCode": "PN12",
+    "message": "Merchant Partner already exist."
+  },
+  {
+    "errorCode": "PN13",
+    "message": "There is an ongoing transaction for this card."
+  },
+  {
+    "errorCode": "PN14",
+    "message": "No matching client and credit card"
+  },
+  {
+    "errorCode": "PN15",
+    "message": "The selected credit card already has a transaction in progress."
+  },
+  {
+    "errorCode": "PN16",
+    "message": "Invalid otp code."
+  },
+  {
+    "errorCode": "PN17",
+    "message": "Unable to cancel reservation that exceeded 15 minutes."
+  },
+  {
+    "errorCode": "PN18",
+    "message": "Unable to send gcm notification"
+  },
+  {
+    "errorCode": "PN19",
+    "message": "Unhandled paynamics error occurred."
+  },
+  {
+    "errorCode": "PN20",
+    "message": "Cancellation blocked. Reservation is already checked in/out."
+  },
+  {
+    "errorCode": "PN21",
+    "message":"The selected car already has an on-going reservation."
+  },
+  {
+    "errorCode": "PN22",
+    "message": "Unable to remove ticket with active reservation."
+  },
+  {
+    "errorCode": "PN23",
+    "message": "Invalid otp pin."
+  },
+  {
+    "errorCode": "PN24",
+    "message": "Mobile number is already used."
+  },
+  {
+    "errorCode": "PN25",
+    "message": "This promo code has reached its number of uses"
+  },
+  {
+    "errorCode": "PN26",
+    "message": "This promo code already expired"
+  },
+  {
+    "errorCode": "PN27",
+    "message": "Security code entered for this account is invalid."
+  },
+  {
+    "errorCode": "PN28",
+    "message": "No user found with corresponding id."
+  }
+]

@@ -1,0 +1,64 @@
+
+<div style="width: 100%;">
+    <nav class="navbar navbar-default" style="border-radius: 0px;position: fixed; z-index: 3; width: 100%;margin-left: -2px;marin-top: -2px;background-color: #333333; height: 30px;">
+        <div class="container-fluid">
+            <div class="navbar-header" style="padding: 10px;">
+                <span class="text1">Parkninja</span><span class=" text1"style="color: #00BFFF;padding-left: 0px;">Dev</span>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse" >
+                <ul class="nav navbar navbar-right">
+                    <li style="padding: 10px;">
+                         <span class="btn1">
+                            <i class="glyphicon glyphicon-off"></i>
+                            <a href="#" (click)="logout()" >Logout</a>
+                         </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper" >
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" style="margin-top: 49px;">
+            <ul class="sidebar-nav">
+                <li class="side-nav-li">
+                    <a [routerLink]="['api']">
+                        <i class="glyphicon glyphicon-fire"></i>  API Management
+                    </a>
+                </li>
+                <li class="side-nav-li">
+                    <a [routerLink]="['logs']">
+                        <i class="glyphicon glyphicon-align-justify glyphicon glyphicon-list"></i>  System Logs
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['accounts']">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Accounts</a>
+                </li>
+                <li class="side-nav-li">
+                    <a [routerLink]="['change_logs']">
+                        <i class="glyphicon glyphicon-list-alt"></i>  Updates
+                    </a>
+                </li>
+                <li class="side-nav-li">
+                    <a [routerLink]="['read_me']">
+                          ??????????????
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <br/><br/>
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <router-outlet></router-outlet>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+</div>

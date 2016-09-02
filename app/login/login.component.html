@@ -1,0 +1,18 @@
+<div style="text-align: center;margin-top: 10%;">
+    <loading-container [loading]="loading">
+       <div style="margin-left:25%; width: 50%; padding: 10px; background: palevioletred; color:white;font-size: 15px;" [hidden]="!invalidCredentials">
+            Good game, well played
+       </div><br/>
+
+        <form (submit)="login($event, username.value, password.value)">
+            <input style="width: 15%;background: white; padding: 10px;" type="text" #username placeholder="username"/> <br/><br/>
+            <input style="width: 15%;background: white; padding: 10px;" type="password" #password placeholder="password"/><br/><br/>
+            <button  type="submit" style="width: 15%;background: seagreen;color:white; border: 1px solid seagreen; padding: 10px;"><span>LOGIN</span></button>
+        </form>
+    </loading-container>
+</div>
+
+<div style="margin-top: 17%; margin-left: 2%;">
+    MidOrFeed toy project (SpringBoot, Gradle, Angular2 / Typescript / System JS)<br/>
+    This includes API Management (revisions), system logs, accounts activity tracking and other nice things.
+</div>

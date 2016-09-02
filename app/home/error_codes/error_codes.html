@@ -1,0 +1,17 @@
+<div>
+    <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+         <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-record"></i></span>
+         <span class="text1" style="color: white;">Error Codes</span>
+    </nav>
+    <nav style="background-color: #44B78B; height: 2%;margin: 0px;border: .5px solid #44B78B; padding: 5px;">
+
+    </nav>
+   <div style="padding: 10px;border-radius: 10px;border: 1px solid white; background: white;height: 70%;overflow: auto;">
+        <li *ngFor="let errorCode of errorCodes">
+               <span style="font-weight: bold;color: #0C3C26;">error code:</span>
+                <span style="color: #0C3C26;">{{errorCode.errorCode}}</span>,
+                <span style="font-weight: bold;color: #0C3C26;">message:</span>
+            <span style="color: #0C3C26;">{{errorCode.message}}</span>
+           </li>
+   </div>
+</div>
