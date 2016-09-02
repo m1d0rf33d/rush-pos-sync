@@ -15,7 +15,7 @@ var ApiService = (function () {
         this.http = http;
     }
     ApiService.prototype.getApis = function (revision) {
-        return this.http.get('http://52.74.190.173:8080/parkninja-dev/resources/app/home/api/api-' + revision + '.json', {})
+        return this.http.get('http://52.74.190.173:80/parkninja-dev/app/home/api/api-' + revision + '.json', {})
             .map(function (res) { return res.json(); });
     };
     ApiService = __decorate([

@@ -9,7 +9,7 @@ export class ApiService {
     } 
 
     getApis(revision) {
-        return this.http.get('http://52.74.190.173:8080/parkninja-dev/resources/app/home/api/api-'+ revision + '.json',{})
+        return this.http.get('http://52.74.190.173:80/parkninja-dev/app/home/api/api-'+ revision + '.json',{})
             .map((res: Response) => res.json());
 
     }
