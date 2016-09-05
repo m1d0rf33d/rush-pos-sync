@@ -18,7 +18,7 @@ var HomeComponent = (function () {
     HomeComponent.prototype.logout = function () {
         window.localStorage.removeItem('auth_key');
         this.router.navigate(['index']);
-        return;
+        window.location.reload();
     };
     HomeComponent = __decorate([
         core_1.Component({

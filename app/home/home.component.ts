@@ -20,6 +20,6 @@ export class HomeComponent {
     logout () {
         window.localStorage.removeItem('auth_key');
         this.router.navigate(['index']);
-        return;
+        window.location.reload();
     }
 }
