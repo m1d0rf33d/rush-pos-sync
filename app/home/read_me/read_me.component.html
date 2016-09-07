@@ -6,32 +6,69 @@
     </nav>
     <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
         <ul>
-            <li>API revision tracking</li>
-            <li>System logs access</li>
-            <li>Parker account control</li>
-            <li>Application change logs</li>
+            <li>API Management/Monitoring</li>
+            <li>Developer Logs</li>
+            <li>Account Monitoring</li>
+            <li>Change logs</li>
         </ul>
     </div>
 
     <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
         <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
-        <span class="text1" style="color: white;">API Management?</span>
+        <span class="text1" style="color: white;">API Management/Monitoring</span>
     </nav>
     <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
-        Parkninja provides RESTful web services that clients (IOS, Android etc..) can access. Each revision will be tracked accordingly, <br/>
-        v(major change).(minor change).(bug fix) thus resulting to something like v2.0.0, this should help avoid chaos caused by constant updates. <br/>
-        You can search API details by revision or environment, if you select a specific environment the revision dropdown will automatically show which revision <br/>
-        is currently deployed on that environment. <br/><br/>
-
-        <b>Error Codes </b>- some known sites like facebook for example provides API's that always return a status 200 regardless of the result so the clients need to <br/>
-        parse the JSON response to determine what really happened to the request. Others make full use of HttpStatus codes which adds complexity for the clients. <br/>
-        Since parkninja is the best we will use the best approach, we will use HttpStatus but with moderation and sum it up to 3 scenarios.<br/>
-
-        1.) Client request is successful and fulfilled without an error. (HttpStatus.200) <br/>
-        2.) Client passed invalid request. (HttpStatus.400) <br/>
-        3.) Parkninja server encountered an error while fulfilling the request. Both handled and unhandled exceptions (HttpStatus.500). <br/><br/>
-
-        If 500 error is encountered 'errorCode' and 'message' field contains the details.
+        You can view API details by first choosing which version you want to see. If you select a specific environment for example 'SAT' the revision dropdown will
+        automatically change to the current version deployed on the environment. If you scroll down you will see the list of <b>error codes</b> and the <b>data dictionary.</b><br/><br/>
+        <b>Did you know? (no, i don't care too)</b><br/>
+        Parkninja provides ReSTful web services for android and ios clients. One of the main concepts of ReST is to
+        make use of Http methods to access logical resources. For parkninja we only use GET and POST to make things simpler.
+        <br/>
+        <ul>
+            <li>GET - Read data / Requests that will not affect state</li>
+            <li>POST - Update, Delete, Create / Requests that affect state</li>
+        </ul>
+        We use plural nouns for the resources.
+        <ul>
+            <li>/api/user -> /api/users (v1 is pretty bad sorry peace yo)</li>
+        </ul>
+        <b>Accessing sub-resources</b>
+        <ul>
+            <li>/api/v2/parking/ -> Read all parking lots data</li>
+            <li>/api/v2/parking/1 -> Read parking lot data with id = 1</li>
+        </ul>
+        Query parameters for sorting, paging etc. -> this is not implemented yet but we will when motivation hits us in the face :)
+        <ul>
+            <li>/api/v2/parking?limit=1&sorting=asc</li>
+        </ul>
+        <b>Http status codes</b>
+        <ul>
+            <li>HttpStatus 200 -> Successful requests</li>
+            <li>HttpStatus 400 -> Something is wrong with the JSON parameters that the client sent.</li>
+            <li>HttpStatus 500 -> Internal Server Error, sounds pretty fckng bad. This should not happen contact the noob API devs immediately.</li>
+        </ul>
+        <b>Authentication</b> -> We are using Oauth2 for generating access tokens because you know it's cool. Since we own the apps that will access
+        our API's we just provide them with a non-expiring access token because we trust them. In case some third party apps wants to access our API's
+        we will provide another way of providing access tokens. <br/>
+        <ul>
+            <li>Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef</li>
+        </ul>
+        <b>Error Handling</b> -> Parse the JSON response 'status' field will have the value of '0', this means the 'error' field will have the error details.<br/>
+        status: 0 ,<br/>
+        error: { <br/>&nbsp;&nbsp;&nbsp;errorCode: "PN01", <br/>&nbsp;&nbsp;&nbsp;message: "Dude you are trying to update a non-existing account. Please stop drugs." <br/>}
+        <br/>
+        <b>JSON Response</b> -> API response will be on json format. If 'status' field is 1 this means the requests is successful, response data will be on the 'data' field.<br/>
+        { <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;status: 1, <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;data: { <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fullName": "chi long qua", <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"deviceId": "666"<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;} <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;error: { <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorCode: null, <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message: null, <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+        }
     </div>
 
     <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
@@ -39,26 +76,21 @@
         <span class="text1" style="color: white;">System Logs?</span>
     </nav>
     <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
-        1.) API Error - contains request failures logs from exposed API's. Format is 'error Code', 'message', 'deviceId'(who made the request).<br/>
-        2.) Paynamics Transactions - logs paynamics calls, xml being sent to paynamics, xml being received from paynamics.<br/>
-        3.) Catalina.out - tomcat server log file contains server startup up process.<br/>
-        4.) ParkninjaCore Error - Parkninja-core application error logs.<br/>
-        5.) ParkwiseCore Error - Parkwise-core error logs.<br/><br/>
+     Under construction
     </div>
     <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
         <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
-        <span class="text1" style="color: white;">Accounts?</span>
+        <span class="text1" style="color: white;">Accounts Monitoring</span>
     </nav>
     <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
-        You can search through all the accounts registered in Parkninja just enter the email address and hit enter. <br/>
-        This will show all the account information, tickets, parking history etc. Developers can deactivate test accounts here.<br/>
+        Under construction
     </div>
 
     <nav style="background-color: #0C3C26; height: 6%;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
         <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-leaf"></i></span>
-        <span class="text1" style="color: white;">Updates?</span>
+        <span class="text1" style="color: white;">Change logs</span>
     </nav>
     <div style="padding: 10px;border: 1px solid white; background: white    ;overflow: auto;">
-       You can check all the changes and updates made from the application here.
+       Under construction
     </div>
 </div>
