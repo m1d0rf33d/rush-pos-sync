@@ -1,44 +1,41 @@
 [
   {
     "id": "1",
-    "text": "/api/user/info",
-    "description": "Return user information",
-    "method": "POST",
+    "text": "/api/v2/users/info/{deviceId}",
+    "description": "/api/v2/users/info/{deviceId}",
+    "method": "GET",
     "requestBody": [
-      "\"userId\": \"1\""
     ],
     "successResponse": [
       "\"email\": \"coffeeislife@yondu.com\"",
       "\"mobileNo\": \"09177105734\"",
-      "\"userStatus\": \"ACTIVE\"",
+      "\"usersStatus\": \"ACTIVE\"",
       "\"fullName\": \"bea benedicto\",",
       "\"registrationDate\": \"08/02/2016 02:40 PM\"",
       "\"deviceId\": \"1\""
     ],
     "failureResponse": [
-      "\"errorCode\": \"PN28\"",
-      "\"message\": \"No user found with corresponding device id.\""
+      "\"errorCode\": \"PN28: No user found with corresponding device id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
-    "additionalDetails":"This is requested by lifebeat API team. Android/IOS clients may not use this."
+    "additionalDetails":"Return account details by deviceId."
   },
   {
     "id": "2",
-    "text": "/api/user/login",
-    "description": "Login/Sign up ",
+    "text": "/api/v2/users/login",
+    "description": "/api/v2/users/login",
     "method": "POST",
     "requestBody": ["\"mobileNo\": \"09177105734\"", "\"email\": \"coffeeislife@yondu.com\"","\"fullName\": \"bea benedicto\"","\"deviceId\": \"1\""],
-    "successResponse": ["\"email\": \"coffeeislife@yondu.com\"","\"mobileNo\": \"09177105734\"","\"userStatus\": \"ACTIVE\"","\"fullName\": \"bea benedicto\"","\"registrationDate\": \"08/02/2016 02:40 PM\""," \"deviceId\": \"1\""],
+    "successResponse": ["\"email\": \"coffeeislife@yondu.com\"","\"mobileNo\": \"09177105734\"","\"usersStatus\": \"ACTIVE\"","\"fullName\": \"bea benedicto\"","\"registrationDate\": \"08/02/2016 02:40 PM\""," \"deviceId\": \"1\""],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "failureResponse": [
-      "\"errorCode\": \"PN29\"",
-      "\"message\": \"Device id is already registered.\""
+      "\"errorCode\": \"PN29: Device id is already registered.\""
     ],
     "additionalDetails": "Login/Sign up is merged to one API call. See UI/UX design for more details."
   },
   {
     "id": "3",
-    "text": "/api/user/otp/send",
+    "text": "/api/v2/users/otp/send",
     "description": "Send OTP verification after Sign up",
     "method": "POST",
     "requestBody": [
@@ -47,35 +44,34 @@
     ],
     "successResponse": ["\"otpSent\": true"],
     "failureResponse": [
-      "\"errorCode\": \"PN29\"",
-      "\"message\": \"No user found with corresponding device id.\""
+      "\"errorCode\": \"PN28: No user found with corresponding device id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails":"An OTP code will be sent to the parker mobile."
   },
   {
     "id": "4",
-    "text": "/api/user/otp/verify",
-    "description": "Verify OTP code",
+    "text": "/api/v2/users/otp/verify",
+    "description": "/api/v2/users/otp/verify",
     "method": "POST",
     "requestBody": [
         "\"deviceId\": \"1\"",
         "\"deviceType\": \"android\"",
-        "\"pin\": \"ABC\""
+        "\"otpCode\": \"3023\""
     ],
     "successResponse": [
       "\"otpVerified\": true"],
     "failureResponse": [
-      "\"errorCode\": \"PN23\"",
-      "\"message\": \"Invalid code.\""
+      "\"errorCode\": \"PN28: No user found with corresponding device id.\"",
+      "\"errorCode\": \"PN16: Invalid otp code.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": "Verify if OTP code is correct."
   },
   {
     "id": "5",
-    "text": "/api/user/profile/update",
-    "description": "Update profile",
+    "text": "/api/v2/users/profile/update",
+    "description": "/api/v2/users/profile/update",
     "method": "POST",
     "requestBody": [
       "\"mobileNo\": \"09177105734\"",
@@ -86,21 +82,20 @@
     "successResponse": [
       "\"email\": \"coffeeislife@yondu.com\"",
       "\"mobileNo\": \"09177105734\"",
-      "\"userStatus\": \"ACTIVE\"",
+      "\"usersStatus\": \"ACTIVE\"",
       "\"fullName\": \"bea benedicto\"",
       "\"registrationDate\": \"08/02/2016 02:40 PM\"",
       "\"deviceId\": \"1\""],
     "failureResponse": [
-      "\"errorCode\": \"PN29\"",
-      "\"message\": \"No user found with corresponding device id.\""
+      "\"errorCode\": \"PN28: No user found with corresponding device id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": "Each field will be updated separately, on the request body you are only required to pass the field being updated and the deviceId."
   },
   {
     "id": "6",
-    "text": "/api/user/profile/uploadPhoto",
-    "description": "Upload profile photo",
+    "text": "/api/v2/users/photo/upload",
+    "description": "/api/v2/users/photo/upload",
     "method": "POST",
     "requestBody": [
       "\"deviceId\": \"2\"",
@@ -111,15 +106,15 @@
       "\"uploadSuccess\": true"
     ],
     "failureResponse": [
-      "\"errorCode\": \"PN30\"",
-      "\"message\": \"The uploaded photo is not a valid image file.\""
+      "\"errorCode\": \"PN28: No user found with corresponding device id.\"",
+      "\"errorCode\": \"PN29: The uploaded photo is not a valid image file.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": "Response is a single JSON Object with a boolean field 'uploadSuccess' value is true if no errors are encountered ."
   },
   {
     "id": "7",
-    "text": "/api/user/profile/retrievePhoto",
+    "text": "/api/v2/users//photo/{deviceId}",
     "description": "Retrieve profile photo",
     "method": "POST",
     "requestBody": [
@@ -136,11 +131,10 @@
   },
   {
     "id": "8",
-    "text": "/api/user/cards",
+    "text": "/api/v2/users/cards/{deviceId}",
     "description": "Retrieve parker credit card details",
-    "method": "POST",
+    "method": "GET",
     "requestBody": [
-      "\"deviceId\": \"2\""
     ],
     "successResponse": [
       "\"cardId\": 1",
@@ -150,15 +144,14 @@
       "\"cardStatus\": \"0\""
     ],
     "failureResponse": [
-      "\"errorCode\": \"PN29\"",
-      "\"message\": \"No user found with corresponding device id.\""
+      "\"errorCode\": \"PN28: No users found with corresponding device id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
-    "additionalDetails": "JSON response contains an Array field 'dataList'. This contains multiple credit card details see Success Response for each card field."
+    "additionalDetails": "'data' field contains an array."
   },
   {
     "id": "22",
-    "text": "/api/user/report",
+    "text": "/api/v2/users/report",
     "description": "Send Report to Parkninja",
     "method": "POST",
     "requestBody": [
@@ -169,15 +162,14 @@
       "\"reportSent\": true"
     ],
     "failureResponse": [
-      "\"errorCode\": \"PN29\"",
-      "\"message\": \"No user found with corresponding device id.\""
+      "\"errorCode\": \"PN28: No users found with corresponding device id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": "Parker report will be emailed to parkninja support team."
   },
   {
     "id": "10",
-    "text": "/api/parking/reserve/estimate",
+    "text": "/api/v2/parkings/reserve/estimate",
     "description": "Estimate Reservation Details",
     "method": "POST",
     "requestBody": [
@@ -191,14 +183,14 @@
     ],
     "failureResponse": [
       "\"errorCode\": \"PN29\"",
-      "\"message\": \"No user found with corresponding device id.\""
+      "\"message\": \"No users found with corresponding device id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": "This contains specific Parking lot reservation price. Final price will be computed on the client side."
   },
   {
     "id": "11",
-    "text": "/api/parking/reserve/proceed",
+    "text": "/api/v2/parkings/reserve/proceed",
     "description": "Proceed to reservation",
     "method": "POST",
     "requestBody": [
@@ -237,36 +229,43 @@
   },
   {
     "id": "12",
-    "text": "/api/parking/list",
-    "description": "Retrieve all parking lots",
+    "text": "/api/v2/parkings/",
+    "description": "/api/v2/parkings/",
     "method": "POST",
     "requestBody": [],
     "successResponse": [
-      "\"id\": 2",
-      "\"location\": \"PSE Carparks\"",
-      "\"slots\": 100",
-      "\"longitude\": \"121.061850\"",
-      "\"latitude\": \"14.583404\"",
-      "\"occupiedSlots\": 27",
-      "\"operatingHours\": \"12:00 AM to 11:00 PM\"",
-      "\"contactDetails\": \"123123123123\"",
-      "\"type\": \"outdoor\"",
-      "\"merchantPartnerId\": 1",
-      "\"address\": \"Lot-2 A2 Bock 13-A Exchange Rd., Antonio Village, Barangay San Antonio, Pasig City\"",
-      "\"parkingRulesId\": 3",
-      "\"imageSource\": \"/opt/tomcat/images/parking/p-parkSquare.jpg\"",
-      "\"availableSlots\": 73",
-      "\"succeedingRate\": \"Php 10.00 + Php 4.00 (Convenience Fee)\"",
-      "\"initialFixedRate\": \"Php 60.01 (first 5 Hours) + Php 8.00(Convenience Fee)\"",
-      "\"initialFixedRateAmount\": 60.01",
-      "\"initialFixedRateDuration\": \"5 Hours\""
+      "\"parkingId\": 2",
+      "\"parkingLocation\": \"PSE Carparks\"",
+      "\"parkingLng\": \"121.061850\"",
+      "\"parkingLat\": \"121.061850\"",
+      "\"parkingStatus\": \"ACTIVE\"",
+      "\"parkingAddress\": \"Lot-2 A2 Bock 13-A Exchange Rd., Antonio Village, Barangay San Antonio, Pasig City\"",
+      "\"parkingPhoto\": \"\"",
+      "\"parkingType\": \"Outdoor\"",
+      "\"parkingSlots\": 300",
+      "\"parkingOccupiedSlots\": 1",
+      "\"parkingRemainingSlots\": 299",
+      "\"parkingIsBookable\": true",
+      "\"parkingRulesId\": 2",
+      "\"parkingOperatingTimeStart\": \"12:00 AM\"",
+      "\"parkingOperatingTimeEnd\": \"12:00 AM\"",
+      "\"parkingInitFixedRate\": 50.00",
+      "\"parkingInitFixedRateDurationHours\": 4",
+      "\"parkingInitFixedRateDurationMins\": 40",
+      "\"parkingSucceedingHourlyRate\": 20.00",
+      "\"parkingWholeDayFlatRate\": 100.00",
+      "\"parkingMarkupInitFixedRate\": 60.00",
+      "\"parkingMarkupSucceedingHourlyRate\": 50.00",
+      "\"parkingMarkupFlatRate\": 50.00"
+    ],
+    "failureResponse": [
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
-    "additionalDetails": "Return is an array of objects(results)"
+    "additionalDetails": "'data' contains an array."
   },
   {
     "id": "13",
-    "text": "/api/parking/nonbookable/list",
+    "text": "/api/v2/parkings/nonbookable/list",
     "description": "Retrieve all nonbookable parking lots",
     "method": "POST",
     "requestBody": [],
@@ -277,7 +276,7 @@
       "\"latitude\": \"14.5600848\"",
       "\"parkingStatus\": \"ACTIVE\"",
       "\"address\": \"Toledo, Makati\"",
-      "\"imageSource\": \"/opt/tomcat/images/parking/p-marketMarketParkingLot.jpg\"",
+      "\"imageSource\": \"/opt/tomcat/images/parkings/p-marketMarketParkingLot.jpg\"",
       "\"type\": \"Outdoor\"",
       "\"slots\": 120\"",
       "\"operatingHours\": \"7:00AM to 10:00AM\"",
@@ -293,7 +292,7 @@
   },
   {
     "id": "14",
-    "text": "/api/parking/nonbookable/details",
+    "text": "/api/v2/parkings/nonbookable/details",
     "description": "Retrieve all nonbookable parking lots",
     "method": "POST",
     "requestBody": [ "\"parkingLotId\": 4"],
@@ -304,7 +303,7 @@
       "\"latitude\": \"14.5600848\"",
       "\"parkingStatus\": \"ACTIVE\"",
       "\"address\": \"Toledo, Makati\"",
-      "\"imageSource\": \"/opt/tomcat/images/parking/p-marketMarketParkingLot.jpg\"",
+      "\"imageSource\": \"/opt/tomcat/images/parkings/p-marketMarketParkingLot.jpg\"",
       "\"type\": \"Outdoor\"",
       "\"slots\": 120\"",
       "\"operatingHours\": \"7:00AM to 10:00AM\"",
@@ -320,40 +319,47 @@
   },
   {
     "id": "15",
-    "text": "/api/parking/details",
+    "text": "/api/v2/parkings/{parkingLotId}",
     "description": "Retrieve all parking lots",
-    "method": "POST",
+    "method": "GET",
     "requestBody": [
-      "\"parkingLotId\": 2"
     ],
     "successResponse": [
-      "\"id\": 2",
-      "\"location\": \"PSE Carparks\"",
-      "\"slots\": 100",
-      "\"longitude\": \"121.061850\"",
-      "\"latitude\": \"14.583404\"",
-      "\"occupiedSlots\": 27",
-      "\"operatingHours\": \"12:00 AM to 11:00 PM\"",
-      "\"contactDetails\": \"123123123123\"",
-      "\"type\": \"outdoor\"",
-      "\"merchantPartnerId\": 1",
-      "\"address\": \"Lot-2 A2 Bock 13-A Exchange Rd., Antonio Village, Barangay San Antonio, Pasig City\"",
-      "\"parkingRulesId\": 3",
-      "\"imageSource\": \"/opt/tomcat/images/parking/p-parkSquare.jpg\"",
-      "\"availableSlots\": 73",
-      "\"succeedingRate\": \"Php 10.00 + Php 4.00 (Convenience Fee)\"",
-      "\"initialFixedRate\": \"Php 60.01 (first 5 Hours) + Php 8.00(Convenience Fee)\"",
-      "\"initialFixedRateAmount\": 60.01",
-      "\"initialFixedRateDuration\": \"5 Hours\""
+      "\"parkingId\": 2",
+      "\"parkingLocation\": \"PSE Carparks\"",
+      "\"parkingLng\": \"121.061850\"",
+      "\"parkingLat\": \"121.061850\"",
+      "\"parkingStatus\": \"ACTIVE\"",
+      "\"parkingAddress\": \"Lot-2 A2 Bock 13-A Exchange Rd., Antonio Village, Barangay San Antonio, Pasig City\"",
+      "\"parkingPhoto\": \"\"",
+      "\"parkingType\": \"Outdoor\"",
+      "\"parkingSlots\": 300",
+      "\"parkingOccupiedSlots\": 1",
+      "\"parkingRemainingSlots\": 299",
+      "\"parkingIsBookable\": true",
+      "\"parkingRulesId\": 2",
+      "\"parkingOperatingTimeStart\": \"12:00 AM\"",
+      "\"parkingOperatingTimeEnd\": \"12:00 AM\"",
+      "\"parkingInitFixedRate\": 50.00",
+      "\"parkingInitFixedRateDurationHours\": 4",
+      "\"parkingInitFixedRateDurationMins\": 40",
+      "\"parkingSucceedingHourlyRate\": 20.00",
+      "\"parkingWholeDayFlatRate\": 100.00",
+      "\"parkingMarkupInitFixedRate\": 60.00",
+      "\"parkingMarkupSucceedingHourlyRate\": 50.00",
+      "\"parkingMarkupFlatRate\": 50.00"
+    ],
+    "failureResponse": [
+      "\"errorCode\": PN34: Parking lot not found.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": ""
   },
   {
     "id": "16",
-    "text": "/api/parking/time",
+    "text": "/api/v2/parkings/time",
     "description": "Get server time",
-    "method": "POST",
+    "method": "GET",
     "requestBody": [
     ],
     "successResponse": [
@@ -364,48 +370,52 @@
   },
   {
     "id": "17",
-    "text": "/api/car/add",
-    "description": "Add parker car",
+    "text": "/api/v2/cars/add",
+    "description": "/api/v2/cars/add",
     "method": "POST",
     "requestBody": [
       "\"deviceId\": \"2\"",
-      "\"make\": \"honda\"",
-      "\"plateNo\": \"xyz123\""
+      "\"carMake\": \"honda\"",
+      "\"carPlateNumber\": \"xyz123\""
     ],
     "successResponse": [
       "\"carId\": \"2\"",
-      "\"make\": \"honda\"",
-      "\"plateNo\": \"xyz123\""
+      "\"carMake\": \"honda\"",
+      "\"carPlateNumber\": \"xyz123\"",
+      "\"carStatus\": \"ACTIVE\""
     ],
     "failureResponse": [
-      "\"errorCode\": \"PN31\"",
-      "\"message\": \"Parker already has a registered car with specified plate number.\""
+      "\"errorCode\": \"PN28: No user found with corresponding device id.\"",
+      "\"errorCode\": \"PN30: Parker already has a registered car with specified plate number.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": "Parker must register unique plate number for each car."
   },
   {
     "id": "18",
-    "text": "/api/car/update",
-    "description": "Update parker car",
+    "text": "/api/v2/cars/update",
+    "description": "/api/v2/cars/update",
     "method": "POST",
     "requestBody": [
       "\"carId\": \"2\"",
-      "\"make\": \"honda\"",
-      "\"plateNo\": \"xyz123\""
+      "\"carMake\": \"honda\"",
+      "\"carPlateNumber\": \"xyz123\""
     ],
     "successResponse": [
       "\"carId\": \"2\"",
-      "\"make\": \"honda\"",
-      "\"plateNo\": \"xyz123\""
+      "\"carMake\": \"honda\"",
+      "\"carPlateNumber\": \"xyz123\""
+    ],
+    "failureResponse": [
+      "\"errorCode\": \"PN31: No car data found for specified car id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
     "additionalDetails": ""
   },
   {
     "id": "19",
-    "text": "/api/car/delete",
-    "description": "Delete parker car",
+    "text": "/api/v2/cars/deactivate",
+    "description": "/api/v2/cars/deactivate",
     "method": "POST",
     "requestBody": [
       "\"carId\": \"2\""
@@ -418,11 +428,12 @@
   },
   {
     "id": "20",
-    "text": "/api/car/validateCar",
-    "description": "Validate parker car",
+    "text": "/api/v2/cars/validate",
+    "description": "/api/v2/cars/validate",
     "method": "POST",
     "requestBody": [
-      "\"carId\": \"2\""
+      "\"carId\": \"2\"",
+      "\"deviceId\": \"2\""
     ],
     "successResponse": [
       "\"success\": true"
@@ -432,18 +443,20 @@
   },
   {
     "id": "21",
-    "text": "/api/car/list",
-    "description": "Retrieve parker cars",
-    "method": "POST",
+    "text": "/api/v2/cars/{deviceId}",
+    "description": "/api/v2/cars/{deviceId}",
+    "method": "GET",
     "requestBody": [
-      "\"deviceId\": \"2\""
     ],
     "successResponse": [
       "\"carId\": \"2\"",
-      "\"make\": \"honda\"",
-      "\"plateNo\": \"xyz123\""
+      "\"carMake\": \"honda\"",
+      "\"carPlateNumber\": \"xyz123\""
+    ],
+    "failureResponse": [
+      "\"errorCode\": \"PN28: No user found with corresponding device id.\""
     ],
     "headers": ["Content-type: application/json", "Authorization: Bearer 09ea8435-403d-4062-bd84-a6907b01c9ef"],
-    "additionalDetails": "Success Response contains an Array field 'dataList'."
+    "additionalDetails": ""
   }
 ]

@@ -48,7 +48,7 @@
             <div class="col-xs-6">
                <div class="row">
                    <div class="col-xs-12" style="border: 1px solid lightgray; height: 8%; background: white; border-radius: 5px;">
-                       <span style="font-weight: bold;color: #0C3C26">Description:  </span>{{selectedApi.description}}
+                       <span style="font-weight: bold;color: #0C3C26">URL:  </span>{{selectedApi.description}}
                    </div>
                    <div class="col-xs-12" style="border: 1px solid lightgray; height: 5%; background: white; border-radius: 5px;">
                        <span style="font-weight: bold;color:#0C3C26">Method: </span>{{selectedApi.method}}
@@ -71,7 +71,7 @@
                 </ul>
             </div>
             <div class="col-xs-6" style="height: 25%;overflow: auto;border: 1px solid lightgray; background: white;border-radius: 5px;">
-                <span style="font-weight: bold;color: #0C3C26"> Success Response / HttpStatus.OK </span>
+                <span style="font-weight: bold;color: #0C3C26"> Success Response (data) / HttpStatus 200 </span>
                 <ul style="list-style: none;">
                     <li *ngFor="let rb of selectedApi.successResponse">{{rb}}</li>
                 </ul>
@@ -84,7 +84,7 @@
                 {{selectedApi.additionalDetails}}
             </div>
             <div class="col-xs-6" style="height: 25%;overflow: auto;border: 1px solid lightgray; background: white;border-radius: 5px;">
-                <span style="font-weight: bold;color: #0C3C26"> Failure Response / HttpStatus.500 </span>
+                <span style="font-weight: bold;color: #0C3C26"> Handled exceptions (error) / HttpStatus 200 </span>
                 <ul style="list-style: none;">
                     <li *ngFor="let rb of selectedApi.failureResponse">{{rb}}</li>
                 </ul>
