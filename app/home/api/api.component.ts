@@ -27,12 +27,18 @@ export class ApiComponent {
 
     //Error codes
     errorCodes: Array<ErrorCode> = [];
+    //Data Dictionary
+    dataDictionary: Array<any> = [];
 
 
     constructor(private apiService: ApiService, private errorCodeService: ErrorCodeService) {
         this.errorCodeService.getErrorCodes().subscribe(errorCodes => {
             this.errorCodes = errorCodes;
         });
+
+        this.apiService.getDataDictionary().subscribe(data => {
+            this.dataDictionary = data;
+        })
     }
 
 

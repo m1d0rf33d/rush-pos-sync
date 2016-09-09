@@ -28,12 +28,17 @@ var ApiComponent = (function () {
         this.selectedApi = new api_model_1.Api();
         //Error codes
         this.errorCodes = [];
+        //Data Dictionary
+        this.dataDictionary = [];
         //ng2-select functions
         this.value = {};
         this._disabledV = '0';
         this.disabled = false;
         this.errorCodeService.getErrorCodes().subscribe(function (errorCodes) {
             _this.errorCodes = errorCodes;
+        });
+        this.apiService.getDataDictionary().subscribe(function (data) {
+            _this.dataDictionary = data;
         });
     }
     ApiComponent.prototype.revisionOnchange = function (value) {

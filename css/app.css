@@ -1,13 +1,12 @@
+body {
+    background:#eaeaea !important;
+}
+
 h1 {
     color: #369;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 250%;
 }
-body {
-    margin: 2em;
-    background:#eaeaea !important;
-}
-
 
 .text1 {
     font: normal 19px "Open Sans", sans-serif;
@@ -34,5 +33,9 @@ pre {
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
-    background: #0C3C26 !important;
+    background: #0C3C26;
+}
+
+#no_hover:hover, #no_hover:focus{
+    background: #e98300;
 }

@@ -18,6 +18,10 @@ var ApiService = (function () {
         return this.http.get('http://52.74.190.173:80/parkninja-dev/app/home/api/api-' + revision + '.json', {})
             .map(function (res) { return res.json(); });
     };
+    ApiService.prototype.getDataDictionary = function () {
+        return this.http.get('http://localhost:3000/app/home/api/data.dictionary.json', {})
+            .map(function (res) { return res.json(); });
+    };
     ApiService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

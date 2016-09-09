@@ -13,5 +13,9 @@ export class ApiService {
             .map((res: Response) => res.json());
 
     }
-    
+
+    getDataDictionary() {
+        return this.http.get('http://localhost:3000/app/home/api/data.dictionary.json',{})
+            .map((res: Response) => res.json());
+    }
 }
