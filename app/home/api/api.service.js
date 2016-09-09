@@ -19,7 +19,7 @@ var ApiService = (function () {
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getDataDictionary = function () {
-        return this.http.get('http://localhost:3000/app/home/api/data.dictionary.json', {})
+        return this.http.get('http://52.74.190.173:80/parkninja-dev/app/home/api/data.dictionary.json', {})
             .map(function (res) { return res.json(); });
     };
     ApiService = __decorate([
