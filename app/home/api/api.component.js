@@ -20,7 +20,6 @@ var ApiComponent = (function () {
         this.revisions = ['v1.0.0', 'v2.0.0'];
         this.environments = [{ text: 'SAT', revision: 'v2.0.0' },
             { text: 'PROD', revision: 'v1.0.0' }];
-        this.items = [];
         //Map binding with Array
         this.itemsMap = new Map();
         this.selectedApi = new api_model_1.Api();
@@ -31,39 +30,47 @@ var ApiComponent = (function () {
         this.errorCodeService.getErrorCodes().subscribe(function (errorCodes) {
             _this.errorCodes = errorCodes;
         });
-        this.apiService.getDataDictionary().subscribe(function (data) {
-            _this.dataDictionary = data;
-        });
+        /*   this.apiService.getDataDictionary().subscribe(data => {
+               this.dataDictionary = data;
+           })*/
+        this.cars = [];
+        this.cars.push({ label: 'Audi', value: 'Audi' });
+        this.cars.push({ label: 'BMW', value: 'BMW' });
+        this.cars.push({ label: 'Fiat', value: 'Fiat' });
+        this.cars.push({ label: 'Ford', value: 'Ford' });
+        this.cars.push({ label: 'Honda', value: 'Honda' });
+        this.cars.push({ label: 'Jaguar', value: 'Jaguar' });
+        this.cars.push({ label: 'Mercedes', value: 'Mercedes' });
+        this.cars.push({ label: 'Renault', value: 'Renault' });
+        this.cars.push({ label: 'VW', value: 'VW' });
+        this.cars.push({ label: 'Volvo', value: 'Volvo' });
     }
     ApiComponent.prototype.revisionOnchange = function (value) {
-        var _this = this;
-        this.items = [];
-        // $('#env-select').val('-1');
-        if (value == -1) {
-            this.items = [];
-            return;
-        }
-        this.apiService.getApis(value).subscribe(function (apis) {
-            _this.items = apis;
-            for (var _i = 0, _a = _this.items; _i < _a.length; _i++) {
-                var item = _a[_i];
-                //Since ng2-select cannot hold the complete data we will bind it to another container
-                _this.itemsMap.set(item.id, item);
-            }
-        });
-    };
+        /*   this.items = [];
+          // $('#env-select').val('-1');
+   
+           if (value == -1) {
+               this.items = [];
+               return;
+           }
+           this.apiService.getApis(value).subscribe(apis => {
+               this.items = apis;
+               for (let item of this.items) {
+                   //Since ng2-select cannot hold the complete data we will bind it to another container
+                   this.itemsMap.set(item.id, item);
+               }
+           });
+   */ };
     ApiComponent.prototype.envOnChange = function (value) {
-        var _this = this;
-        this.items = [];
-        //$('#revision-select').val(value);
-        this.apiService.getApis(value).subscribe(function (apis) {
-            _this.items = apis;
-            for (var _i = 0, _a = _this.items; _i < _a.length; _i++) {
-                var item = _a[_i];
-                //Since ng2-select cannot hold the complete data we will bind it to another container
-                _this.itemsMap.set(item.id, item);
-            }
-        });
+        /*     this.items = [];
+             //$('#revision-select').val(value);
+              this.apiService.getApis(value).subscribe(apis => {
+                  this.items = apis;
+                  for (let item of this.items) {
+                      //Since ng2-select cannot hold the complete data we will bind it to another container
+                      this.itemsMap.set(item.id, item);
+                  }
+              });*/
     };
     ApiComponent = __decorate([
         core_1.Component({

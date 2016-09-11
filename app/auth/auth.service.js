@@ -18,8 +18,9 @@ var AuthService = (function () {
         this.http = http;
         this.router = router;
     }
-    AuthService.prototype.authenticate = function (username, password) {
+    AuthService.prototype.authenticate = function (username, password, loginComponent) {
         var _this = this;
+        loginComponent.standby();
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         this.http.post('http://52.74.190.173:8080/parkninja-core/oauth/token?grant_type=password&username=' + username + '&password=' +
@@ -28,7 +29,8 @@ var AuthService = (function () {
                 window.localStorage.setItem('auth_key', data.json().access_token);
                 _this.router.navigate(['index']);
             }
-        }, function (error) { });
+            loginComponent.ready();
+        }, function (error) { loginComponent.ready(); loginComponent.invalidCredentials = true; });
     };
     AuthService = __decorate([
         core_1.Injectable(), 

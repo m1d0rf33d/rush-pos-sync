@@ -12,13 +12,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var login_component_1 = require('../login/login.component');
 var login_service_1 = require('../login/login.service');
+var common_1 = require('@angular/common');
+var loading_container_1 = require('../spinner/loading_container');
 var LoginModule = (function () {
     function LoginModule() {
     }
     LoginModule = __decorate([
         core_1.NgModule({
-            imports: [],
-            declarations: [login_component_1.LoginComponent],
+            imports: [common_1.CommonModule],
+            declarations: [loading_container_1.LoadingContainer, login_component_1.LoginComponent],
             providers: [login_service_1.LoginService]
         }), 
         __metadata('design:paramtypes', [])

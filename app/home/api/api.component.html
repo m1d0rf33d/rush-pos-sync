@@ -28,16 +28,14 @@
                    <span style="font-weight:bold;color: white;">Endpoint</span>
                </div>
                <div class="col-md-3">
-                <!--   <ng-select [allowClear]="true"
-                              [data]="items"
-                              [items]="items"
-                              [disabled]="disabled"
-                              (data)="refreshValue($event)"
-                              (selected)="selected($event)"
-                              (removed)="removed($event)"
-                              (typed)="typed($event)"
-                              placeholder="Select Endpoint">
-                   </ng-select>-->
+                   <p-dropdown filter=true [options]="cars" [(ngModel)]="selectedCar" [style]="{'width':'150px'}">
+                       <template let-car>
+                           <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+
+                               <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+                           </div>
+                       </template>
+                   </p-dropdown>
                </div>
            </div>
         </nav>
