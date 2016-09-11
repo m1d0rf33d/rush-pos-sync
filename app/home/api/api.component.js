@@ -11,8 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var api_model_1 = require('../api/api.model');
 var api_service_1 = require('../api/api.service');
-var common_1 = require('@angular/common');
-var ng2_select_1 = require('../../../node_modules/ng2-select/ng2-select');
 var error_codes_service_1 = require('../error_codes/error_codes.service');
 var ApiComponent = (function () {
     function ApiComponent(apiService, errorCodeService) {
@@ -30,10 +28,6 @@ var ApiComponent = (function () {
         this.errorCodes = [];
         //Data Dictionary
         this.dataDictionary = [];
-        //ng2-select functions
-        this.value = {};
-        this._disabledV = '0';
-        this.disabled = false;
         this.errorCodeService.getErrorCodes().subscribe(function (errorCodes) {
             _this.errorCodes = errorCodes;
         });
@@ -44,7 +38,7 @@ var ApiComponent = (function () {
     ApiComponent.prototype.revisionOnchange = function (value) {
         var _this = this;
         this.items = [];
-        $('#env-select').val('-1');
+        // $('#env-select').val('-1');
         if (value == -1) {
             this.items = [];
             return;
@@ -61,7 +55,7 @@ var ApiComponent = (function () {
     ApiComponent.prototype.envOnChange = function (value) {
         var _this = this;
         this.items = [];
-        $('#revision-select').val(value);
+        //$('#revision-select').val(value);
         this.apiService.getApis(value).subscribe(function (apis) {
             _this.items = apis;
             for (var _i = 0, _a = _this.items; _i < _a.length; _i++) {
@@ -71,37 +65,12 @@ var ApiComponent = (function () {
             }
         });
     };
-    Object.defineProperty(ApiComponent.prototype, "disabledV", {
-        get: function () {
-            return this._disabledV;
-        },
-        set: function (value) {
-            this._disabledV = value;
-            this.disabled = this._disabledV === '1';
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ApiComponent.prototype.selected = function (value) {
-        console.log('Selected value is: ', value.id);
-        this.selectedApi = this.itemsMap.get(value.id);
-    };
-    ApiComponent.prototype.removed = function (value) {
-        console.log('Removed value is: ', value);
-    };
-    ApiComponent.prototype.typed = function (value) {
-        console.log('New search input: ', value);
-    };
-    ApiComponent.prototype.refreshValue = function (value) {
-        this.value = value;
-    };
     ApiComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'app-api',
             templateUrl: 'api.component.html',
-            providers: [api_service_1.ApiService, error_codes_service_1.ErrorCodeService],
-            directives: [ng2_select_1.SELECT_DIRECTIVES, common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, common_1.NgClass]
+            providers: [api_service_1.ApiService, error_codes_service_1.ErrorCodeService]
         }), 
         __metadata('design:paramtypes', [api_service_1.ApiService, error_codes_service_1.ErrorCodeService])
     ], ApiComponent);

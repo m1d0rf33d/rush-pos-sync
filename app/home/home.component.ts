@@ -1,14 +1,13 @@
 import {Component} from '@angular/core';
 import {AuthService } from '../auth/auth.service';
-import {Router, ROUTER_DIRECTIVES} from '@angular/router';
+import {Router} from '@angular/router';
 
 
 @Component({
     moduleId: module.id,
     selector: 'app-home',
     templateUrl: 'home.component.html',
-    providers: [AuthService],
-    directives: [ROUTER_DIRECTIVES]
+    providers: [AuthService]
 })
 
 export class HomeComponent {

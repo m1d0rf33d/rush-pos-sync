@@ -1,114 +1,122 @@
 [
   {
     "errorCode": "PN01",
-    "message": "Invalid promo code."
+    "message": "Device reservation has been locked. Contact parkninja support."
   },
   {
     "errorCode": "PN02",
-    "message": "Customer reservation locked."
+    "message": "Given username is already used by other accounts, please use a new one."
   },
   {
     "errorCode": "PN03",
-    "message": "Username already used."
+    "message": "Given email is already used by other accounts, please use a new one."
   },
   {
     "errorCode": "PN04",
-    "message": "Email already used."
+    "message": "No user matched the given userId."
   },
   {
     "errorCode": "PN05",
-    "message": "No account was found using that email."
+    "message": "Given username and password did not match any user."
   },
   {
     "errorCode": "PN06",
-    "message": "Invalid credentials."
+    "message": "Activation key did not match."
   },
   {
     "errorCode": "PN07",
-    "message": "Invalid activation key."
+    "message": "Confirm password field did not match the given password."
   },
   {
     "errorCode": "PN08",
-    "message": "Password does not match."
+    "message": "No user match found for given email."
   },
   {
     "errorCode": "PN09",
-    "message": "Email does not exist."
+    "message": "Something terribly wrong happened. Call 911 now."
   },
   {
     "errorCode": "PN10",
-    "message": "Code error"
+    "message": "Selected credit card for reservation does not have enough gold to pay for the reservation."
   },
   {
     "errorCode": "PN11",
-    "message": "Client has insufficient funds."
+    "message": "Given merchant id did not match any merchant."
   },
   {
     "errorCode": "PN12",
-    "message": "Merchant Partner already exist."
+    "message": "Unable to remove credit card because there is an active reservation mapped to it."
   },
   {
     "errorCode": "PN13",
-    "message": "There is an ongoing transaction for this card."
+    "message": "No client card data matched with the given id."
   },
   {
     "errorCode": "PN14",
-    "message": "No matching client and credit card"
+    "message": "There is an active transaction mapped to the given credit card, please use a different card."
   },
   {
     "errorCode": "PN15",
-    "message": "The selected credit card already has a transaction in progress."
+    "message": "OTP code did not match the code sent on the user mobile."
   },
   {
     "errorCode": "PN16",
-    "message": "Invalid otp code."
-  },
-  {
-    "errorCode": "PN17",
     "message": "Unable to cancel reservation that exceeded 15 minutes."
   },
   {
+    "errorCode": "PN17",
+    "message": "An unexpected error was returned by Paynamics API."
+  },
+  {
     "errorCode": "PN18",
-    "message": "Unable to send gcm notification"
+    "message": "Unable to cancel a reservation that is already checked in/out."
   },
   {
     "errorCode": "PN19",
-    "message": "Unhandled paynamics error occurred."
+    "message": "The selected car already has an active reservation."
   },
   {
     "errorCode": "PN20",
-    "message": "Cancellation blocked. Reservation is already checked in/out."
+    "message": "Unable to remove ticket with an active reservation."
   },
   {
     "errorCode": "PN21",
-    "message":"The selected car already has an on-going reservation."
+    "message":"The user cannot use the selected promo code because it already reached it's max usage count."
   },
   {
     "errorCode": "PN22",
-    "message": "Unable to remove ticket with active reservation."
+    "message": "Selected promo code is already expired."
   },
   {
     "errorCode": "PN23",
-    "message": "Invalid otp pin."
+    "message": "No user matched the given deviceId."
   },
   {
     "errorCode": "PN24",
-    "message": "Mobile number is already used."
+    "message": "There is already an existing account that has the given deviceId."
   },
   {
     "errorCode": "PN25",
-    "message": "This promo code has reached its number of uses"
+    "message": "The uploaded photo is not a valid image file."
   },
   {
     "errorCode": "PN26",
-    "message": "This promo code already expired"
+    "message": "Given plate number is already registered by the user."
   },
   {
     "errorCode": "PN27",
-    "message": "Security code entered for this account is invalid."
+    "message": "No match found for given carId."
   },
   {
     "errorCode": "PN28",
-    "message": "No user found with corresponding id."
+    "message": "Unable to send OTP to parker. Lifebeat API might be down."
+  },
+  {
+    "errorCode": "PN29",
+    "message": "No corresponding parking lot data matched the given parkingLotId."
+  },
+  {
+    "errorCode": "PN30",
+    "message": "No match found for given parkingReservationId."
   }
 ]

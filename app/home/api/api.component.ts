@@ -1,8 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Api} from '../api/api.model';
 import {ApiService} from '../api/api.service';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
-import {SELECT_DIRECTIVES} from '../../../node_modules/ng2-select/ng2-select';
 import {ErrorCodeService} from '../error_codes/error_codes.service';
 import {ErrorCode} from '../error_codes/error_codes.model';
 
@@ -10,8 +8,7 @@ import {ErrorCode} from '../error_codes/error_codes.model';
     moduleId: module.id,
     selector: 'app-api',
     templateUrl: 'api.component.html',
-    providers: [ApiService, ErrorCodeService],
-    directives: [SELECT_DIRECTIVES,CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass]
+    providers: [ApiService, ErrorCodeService]
 })
  
 export class ApiComponent {
@@ -44,7 +41,7 @@ export class ApiComponent {
 
     revisionOnchange(value) {
         this.items = [];
-        $('#env-select').val('-1');
+       // $('#env-select').val('-1');
 
         if (value == -1) {
             this.items = [];
@@ -61,7 +58,7 @@ export class ApiComponent {
 
     envOnChange(value) {
        this.items = [];
-       $('#revision-select').val(value);
+       //$('#revision-select').val(value);
         this.apiService.getApis(value).subscribe(apis => {
             this.items = apis;
             for (let item of this.items) {
@@ -73,36 +70,6 @@ export class ApiComponent {
 
 
 
-    //ng2-select functions
-    private value:any = {};
-    private _disabledV:string = '0';
-    private disabled:boolean = false;
-
-    private get disabledV():string {
-        return this._disabledV;
-    }
-
-    private set disabledV(value:string) {
-        this._disabledV = value;
-        this.disabled = this._disabledV === '1';
-    }
-    public selected(value:any):void {
-        console.log('Selected value is: ', value.id);
-        this.selectedApi = this.itemsMap.get(value.id);
-    }
-
-    public removed(value:any):void {
-        console.log('Removed value is: ', value);
-    }
-
-    public typed(value:any):void {
-        console.log('New search input: ', value);
-    }
-
-    public refreshValue(value:any):void {
-        this.value = value;
-    }
-    //end of ng2-select functions
 
 
 

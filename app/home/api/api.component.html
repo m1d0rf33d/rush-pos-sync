@@ -24,11 +24,11 @@
                        <option [value]="env.revision" *ngFor="let env of environments">{{env.text}}</option>
                    </select>
                </div>
-               <div class="col-md-2" style="text-align: right;padding: 5px;">
+               <div class="col-md-1 col-md-offset-1" style="text-align: right;padding: 5px;">
                    <span style="font-weight:bold;color: white;">Endpoint</span>
                </div>
                <div class="col-md-3">
-                   <ng-select [allowClear]="true"
+                <!--   <ng-select [allowClear]="true"
                               [data]="items"
                               [items]="items"
                               [disabled]="disabled"
@@ -37,7 +37,7 @@
                               (removed)="removed($event)"
                               (typed)="typed($event)"
                               placeholder="Select Endpoint">
-                   </ng-select>
+                   </ng-select>-->
                </div>
            </div>
         </nav>
@@ -53,7 +53,7 @@
                    <div class="col-md-12" style="margin-top: 5px;border: 2px solid #07b094; height: 5%; background: white;padding: 5px;">
                        <span style="font-weight: bold;color:#05904e">Method: </span>{{selectedApi.method}}
                    </div>
-                   <div class="col-md-12"  style="margin-top: 5px;border: 2px solid #07b094; height: 12%; background: white;padding: 5px;">
+                   <div class="col-md-12"  style="overflow: auto;margin-top: 5px;border: 2px solid #07b094; height: 13%; background: white;padding: 5px;">
                        <span style="font-weight: bold;color: #05904e">Headers: </span>
                        <ul >
                            <li *ngFor="let rb of selectedApi.headers">{{rb}}</li>
@@ -62,7 +62,7 @@
                </div>
             </div>
             <div class="col-md-6" style="padding: 5px;margin-left: 20px;overflow:auto;border: 2px solid #07b094 ; height: 25%; background: white; ">
-                <span style="font-weight: bold;color: #05904e"> Request Body (application/json) </span>
+                <span style="font-weight: bold;color: #05904e"> Request Body </span>
                 <ul style="list-style: none;">
                     <li *ngFor="let rb of selectedApi.requestBody">{{rb}}</li>
                 </ul>
@@ -72,13 +72,13 @@
        <br/>
         <div class="row">
             <div class="col-md-5" style="adding: 5px;margin-left: 10px;height: 40%;overflow: auto;border: 2px solid #07b094; background: white;">
-                <span style="font-weight: bold;color: #05904e"> Success Response (data) / HttpStatus 200 </span>
+                <span style="font-weight: bold;color: #05904e"> Response Data </span>
                 <ul style="list-style: none;">
                     <li *ngFor="let rb of selectedApi.successResponse">{{rb}}</li>
                 </ul>
             </div>
             <div class="col-md-6" style="adding: 5px;margin-left: 20px;height: 40%;overflow: auto;border: 2px solid #07b094; background: white;">
-                <span style="font-weight: bold;color: #05904e"> Handled exceptions (error) / HttpStatus 200 </span>
+                <span style="font-weight: bold;color: #05904e"> Handled Errors</span>
                 <ul style="list-style: none;">
                     <li *ngFor="let rb of selectedApi.failureResponse">{{rb}}</li>
                 </ul>
@@ -116,10 +116,22 @@
         <span class="text1" style="color: white;">Error Codes</span>
     </nav>
     <div style="padding: 10px;border: 1px solid white; background: white;overflow: auto;">
-        <li *ngFor="let errorCode of errorCodes">
-            <span style="font-weight: bold;color: #05904e;">error code:</span>
-            <span style="color: #05904e;">{{errorCode.errorCode}}</span>,
-            <span style="font-weight: bold;color: #05904e;">message:</span>
-            <span style="color: #05904e;">{{errorCode.message}}</span>
-        </li>
+        <table class="table-striped">
+            <tr>
+                <td style="padding: 5px;">
+                    <b>Error Code</b>
+                </td>
+                <td style="padding: 5px;">
+                    <b>Message</b>
+                </td>
+            </tr>
+            <tr *ngFor="let errorCode of errorCodes">
+                <td style="padding: 5px;color: #e10216;">
+                    {{errorCode.errorCode}}
+                </td>
+                <td>
+                    {{errorCode.message}}
+                </td>
+            </tr>
+        </table>
     </div>

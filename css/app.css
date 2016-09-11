@@ -39,3 +39,7 @@ pre {
 #no_hover:hover, #no_hover:focus{
     background: #e98300;
 }
+
+span, label, a{
+    font-family: Special Elite !important;
+}

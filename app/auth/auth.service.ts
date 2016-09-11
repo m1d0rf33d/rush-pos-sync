@@ -11,8 +11,8 @@ export class AuthService {
     constructor (private http: Http, private router: Router) {
     }
 
-    authenticate (username, password, loginComponent) {
-        loginComponent.loading = true;
+    authenticate (username, password) {
+
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
@@ -23,8 +23,8 @@ export class AuthService {
                     window.localStorage.setItem('auth_key', data.json().access_token);
                     this.router.navigate(['index'])
                 }
-                loginComponent.loading = false;
+
             },
-            error => {  loginComponent.loading = false; loginComponent.invalidCredentials = true});
+            error => {  });
     }
 }

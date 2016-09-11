@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var logs_service_1 = require('../logs/logs.service');
-var loading_container_1 = require('../../spinner/loading_container');
 var LogsComponent = (function () {
     function LogsComponent(logsService) {
         this.logsService = logsService;
@@ -35,8 +34,7 @@ var LogsComponent = (function () {
             moduleId: module.id,
             selector: 'app-logs',
             templateUrl: 'logs.component.html',
-            providers: [logs_service_1.LogsService],
-            directives: [loading_container_1.LoadingContainer]
+            providers: [logs_service_1.LogsService]
         }), 
         __metadata('design:paramtypes', [logs_service_1.LogsService])
     ], LogsComponent);

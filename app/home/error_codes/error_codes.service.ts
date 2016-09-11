@@ -9,7 +9,7 @@ export class ErrorCodeService {
     }  
 
     getErrorCodes () {
-        return this.http.get('http://52.74.190.173:80/parkninja-dev/app/home/error_codes/error_codes.json',{})
+        return this.http.get('http://localhost:3000/app/home/error_codes/error_codes.json',{})
             .map((res: Response) => res.json());
 
     }

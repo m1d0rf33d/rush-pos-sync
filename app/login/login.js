@@ -8,28 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+//LoginModule
 var core_1 = require('@angular/core');
-var auth_service_1 = require('../auth/auth.service');
-var router_1 = require('@angular/router');
-var HomeComponent = (function () {
-    function HomeComponent(router) {
-        this.router = router;
+var login_component_1 = require('../login/login.component');
+var login_service_1 = require('../login/login.service');
+var LoginModule = (function () {
+    function LoginModule() {
     }
-    HomeComponent.prototype.logout = function () {
-        window.localStorage.removeItem('auth_key');
-        this.router.navigate(['index']);
-        window.location.reload();
-    };
-    HomeComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'app-home',
-            templateUrl: 'home.component.html',
-            providers: [auth_service_1.AuthService]
+    LoginModule = __decorate([
+        core_1.NgModule({
+            imports: [],
+            declarations: [login_component_1.LoginComponent],
+            providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], HomeComponent);
-    return HomeComponent;
+        __metadata('design:paramtypes', [])
+    ], LoginModule);
+    return LoginModule;
 }());
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+exports.LoginModule = LoginModule;
+//# sourceMappingURL=login.js.map

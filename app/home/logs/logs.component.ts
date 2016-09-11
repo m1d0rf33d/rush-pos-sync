@@ -6,8 +6,7 @@ import {LoadingContainer, LoadingPage} from '../../spinner/loading_container';
     moduleId: module.id,
     selector: 'app-logs',
     templateUrl: 'logs.component.html',
-    providers: [LogsService],
-    directives: [LoadingContainer]
+    providers: [LogsService]
 })
 
 export class LogsComponent implements OnInit{

@@ -1,30 +1,34 @@
-<div >
-    <nav style="background-color: #0C3C26; height: 40px;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
-        <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-user"></i> </span> <span class="text1" style="color: white;">Parker Accounts</span>
-    </nav>
-    <nav style="background-color: #44B78B;margin: 0px; height: 50px;border: .5px solid #44B78B;padding: 10px;">
-        <div class="block">
-            <label style="color: white;display: inline-block;">Search email: </label>
-            <input #box (keyup.enter)="findUser(box.value, $event)" type="text" style="width: 20%;border-radius: 5px;margin-left: 10px;">
-        </div>
-    </nav>
-    <div style="overflow: auto;height: 70%;">
-        <div *ngFor="let account of results" class="row" style="border: 1px solid white;margin: 5px;width: 90%; background: white;border-radius: 5px; height: 40%; overflow: auto;">
-            <div class="col-xs-2" style="height: 90%;background: #46b8da;border: 1px solid #46b8da;border-radius: 5px;">
-                <img src="{{account.imageSource}}" style="height: 100%;width: 100%;"/>
+
+    <div >
+        <nav style="background-color: #0C3C26; height: 40px;margin: 0px;border: .5px solid #0C3C26; padding: 5px;">
+            <span  class="text1" style="color: #FFBF00;"> <i class="glyphicon glyphicon-user"></i> </span> <span class="text1" style="color: white;">Parker Accounts</span>
+        </nav>
+        <nav style="background-color: #44B78B;margin: 0px; height: 50px;border: .5px solid #44B78B;padding: 10px;">
+            <div class="block">
+                <label style="color: white;display: inline-block; font-family: Special Elite;">Enter email: </label>
+                <input #box (keyup.enter)="findUser(box.value, $event)" type="text" style="width: 30%;margin-left: 10px;">
             </div>
-            <div class="col-xs-10">
-                <span style="color: #0f7595;">Full Name: </span>{{account.fullName}}<br/>
-                <span style="color: #0f7595;">Email: </span>     {{account.email}}<br/>
-                <span style="color: #0f7595;">Device Id: </span> {{account.deviceId}}<br/>
-                <span style="color: #0f7595;">Registration Date: </span> {{account.registrationDate}}<br/>
-                <span style="color: #0f7595;">Last Activity: </span> {{account.registrationDate}}<br/>
-                <p class = "tpbutton btn-toolbar text-center">
-                    <a href="#" (click)="notWorking($event)" class="btn btn-default">Tickets</a>
-                    <a href="#" (click)="notWorking($event)" class="btn btn-default">History</a>
-                    <a href="#" (click)="notWorking($event)" class="btn btn-default">Deactivate</a>
-                </p>
+        </nav>
+
+        <div style="overflow: auto;height: 70%;">
+            <div *ngFor="let account of results" class="row" style="border: 1px solid #44B78B;margin: 5px;width: 90%; background: white;height: 40%; overflow: auto;">
+                <div class="col-xs-2" style="height: 90%;">
+                    <img src="{{account.imageSource}}" style="height: 100%;width: 100%;"/>
+                </div>
+                <div class="col-xs-10">
+                    <span style="color: #0f7595;">Full Name: </span>{{account.fullName}}<br/>
+                    <span style="color: #0f7595;">Email: </span>     {{account.email}}<br/>
+                    <span style="color: #0f7595;">Device Id: </span> {{account.deviceId}}<br/>
+                    <span style="color: #0f7595;">Registration Date: </span> {{account.registrationDate}}<br/>
+                    <span style="color: #0f7595;">Last Activity: </span> {{account.registrationDate}}<br/>
+                    <p class = "tpbutton btn-toolbar text-center">
+                        <a href="#" (click)="notWorking($event)" class="btn btn-default">Tickets</a>
+                        <a href="#" (click)="notWorking($event)" class="btn btn-default">History</a>
+                        <a href="#" (click)="notWorking($event)" class="btn btn-default">Deactivate</a>
+                    </p>
+                </div>
             </div>
         </div>
+
     </div>
-</div>
+

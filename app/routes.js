@@ -9,7 +9,7 @@ var api_component_1 = require('./home/api/api.component');
 var error_codes_component_1 = require("./home/error_codes/error_codes.component");
 var change_logs_component_1 = require('./home/change_logs/change_logs.component');
 var read_me_component_1 = require('./home/read_me/read_me.component');
-exports.appRoutes = [
+var appRoutes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: 'index',
         pathMatch: 'full'
@@ -24,5 +24,6 @@ exports.appRoutes = [
             { path: 'change_logs', component: change_logs_component_1.ChangeLogsComponent },
             { path: 'read_me', component: read_me_component_1.ReadMeComponent }
         ] }];
-exports.AppRouterProvider = router_1.provideRouter(exports.appRoutes);
+exports.appRoutingProviders = [];
+exports.routing = router_1.RouterModule.forRoot(appRoutes);
 //# sourceMappingURL=routes.js.map
