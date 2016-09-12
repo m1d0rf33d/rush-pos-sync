@@ -21,12 +21,13 @@ var routes_1 = require('../routes');
 var common_1 = require('@angular/common');
 var primeng_1 = require('primeng/primeng');
 var forms_1 = require('@angular/forms');
+var primeng_2 = require('primeng/primeng');
 var HomeModule = (function () {
     function HomeModule() {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [routes_1.routing, common_1.CommonModule, primeng_1.DropdownModule, forms_1.FormsModule],
+            imports: [routes_1.routing, common_1.CommonModule, primeng_1.DropdownModule, forms_1.FormsModule, primeng_2.DialogModule],
             declarations: [home_component_1.HomeComponent,
                 api_component_1.ApiComponent,
                 account_component_1.AccountComponent,

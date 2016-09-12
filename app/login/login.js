@@ -20,7 +20,7 @@ var LoginModule = (function () {
     }
     LoginModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, primeng_1.DialogModule],
+            imports: [common_1.CommonModule, primeng_1.MessagesModule],
             declarations: [loading_container_1.LoadingContainer, login_component_1.LoginComponent],
             providers: [login_service_1.LoginService]
         }), 

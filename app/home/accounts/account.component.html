@@ -22,9 +22,9 @@
                     <span style="color: #0f7595;">Registration Date: </span> {{account.registrationDate}}<br/>
                     <span style="color: #0f7595;">Last Activity: </span> {{account.registrationDate}}<br/>
                     <p class = "tpbutton btn-toolbar text-center">
-                        <a href="#" (click)="notWorking($event)" class="btn btn-default">Tickets</a>
-                        <a href="#" (click)="notWorking($event)" class="btn btn-default">History</a>
-                        <a href="#" (click)="notWorking($event)" class="btn btn-default">Deactivate</a>
+                        <a href="#" (click)="displayTickets($event, account.deviceId)" class="btn btn-default">Tickets</a>
+                        <a href="#" (click)="displayTickets($event, account.deviceId)" class="btn btn-default">History</a>
+                        <a href="#" (click)="displayTickets($event, account.deviceId)" class="btn btn-default">Deactivate</a>
                     </p>
                 </div>
             </div>
@@ -32,3 +32,14 @@
 
     </div>
 
+    <p-dialog [(visible)]="display">
+        <header>
+           <div *ngFor="let ticket of tickets">
+               {{ticket.id}}
+           </div>
+        </header>
+        Content
+        <footer>
+            Footer content here
+        </footer>
+    </p-dialog>

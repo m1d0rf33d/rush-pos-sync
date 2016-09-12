@@ -12,6 +12,8 @@ import {Account} from '../accounts/account.model';
 export class AccountComponent {
     
     results: Array<Account> = [];
+    tickets = [];
+    display = false;
 
     constructor(private accountService: AccountService) {
     }
@@ -24,7 +26,13 @@ export class AccountComponent {
             
         });
     }
-    notWorking(e) {
+    displayTickets(e, deviceId) {
         e.preventDefault();
+
+        this.accountService.getTickets(deviceId).subscribe(data => {
+           console.log(data);
+
+        });
+        this.display = true;
     }
 }

@@ -21,6 +21,15 @@ var AccountService = (function () {
         return this.http.post('http://52.74.190.173:8080/parkninja-core/dev/findUser', body, options)
             .map(function (res) { return res.json(); });
     };
+    AccountService.prototype.getTickets = function (deviceId) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', 'Bearer Bearer 52ac0261-79c7-49db-9fcf-22e170addc76');
+        return this.http.get('http://localhost:8080/parkninja-core/api/v2/users/tickets/101', {
+            headers: headers
+        })
+            .map(function (res) { return res.json(); });
+    };
     AccountService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

@@ -14,6 +14,8 @@ var AccountComponent = (function () {
     function AccountComponent(accountService) {
         this.accountService = accountService;
         this.results = [];
+        this.tickets = [];
+        this.display = false;
     }
     AccountComponent.prototype.findUser = function (email, e) {
         var _this = this;
@@ -22,8 +24,12 @@ var AccountComponent = (function () {
             _this.results = users;
         });
     };
-    AccountComponent.prototype.notWorking = function (e) {
+    AccountComponent.prototype.displayTickets = function (e, deviceId) {
         e.preventDefault();
+        this.accountService.getTickets(deviceId).subscribe(function (data) {
+            console.log(data);
+        });
+        this.display = true;
     };
     AccountComponent = __decorate([
         core_1.Component({

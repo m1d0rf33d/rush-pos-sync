@@ -12,16 +12,28 @@ import {LoadingPage} from '../spinner/loading_container';
 
 export class LoginComponent extends LoadingPage {
     invalidCredentials = false;
-    displayModal = false;
+    msgs = [];
 
     constructor (private authService: AuthService, private router: Router) {
         super(false);
     }
 
     login (event, username, password) {
-        this.displayModal = true;
+        this.showError();
         event.preventDefault();
         this.authService.authenticate(username, password, this);
 
     }
+
+
+
+    showError() {
+        this.msgs = [];
+        this.msgs.push({severity:'error', summary:'Access Denied', detail:''});
+    }
+
+    hideError() {
+        this.msgs = [];
+    }
+
 }

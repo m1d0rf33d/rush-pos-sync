@@ -12,9 +12,10 @@ import {routing, appRoutingProviders} from '../routes';
 import {CommonModule} from '@angular/common';
 import {DropdownModule} from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/primeng';
 
 @NgModule({
-    imports: [routing,CommonModule,DropdownModule, FormsModule],
+    imports: [routing,CommonModule,DropdownModule, FormsModule, DialogModule],
     declarations: [HomeComponent,
         ApiComponent,
         AccountComponent,
