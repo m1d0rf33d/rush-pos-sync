@@ -26,14 +26,14 @@ var HomeModule = (function () {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [routes_1.routing, common_1.CommonModule, primeng_1.DropdownModule],
+            imports: [routes_1.routing, common_1.CommonModule, primeng_1.DropdownModule, forms_1.FormsModule],
             declarations: [home_component_1.HomeComponent,
                 api_component_1.ApiComponent,
                 account_component_1.AccountComponent,
                 change_logs_component_1.ChangeLogsComponent,
                 error_codes_component_1.ErrorCodesComponent,
                 logs_component_1.LogsComponent,
-                read_me_component_1.ReadMeComponent, forms_1.FORM_DIRECTIVES],
+                read_me_component_1.ReadMeComponent],
             providers: [routes_1.appRoutingProviders]
         }), 
         __metadata('design:paramtypes', [])

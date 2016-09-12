@@ -24,8 +24,10 @@ var LoginComponent = (function (_super) {
         this.authService = authService;
         this.router = router;
         this.invalidCredentials = false;
+        this.displayModal = false;
     }
     LoginComponent.prototype.login = function (event, username, password) {
+        this.displayModal = true;
         event.preventDefault();
         this.authService.authenticate(username, password, this);
     };

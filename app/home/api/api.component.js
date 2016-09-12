@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var api_model_1 = require('../api/api.model');
 var api_service_1 = require('../api/api.service');
 var error_codes_service_1 = require('../error_codes/error_codes.service');
 var ApiComponent = (function () {
@@ -17,35 +16,43 @@ var ApiComponent = (function () {
         var _this = this;
         this.apiService = apiService;
         this.errorCodeService = errorCodeService;
-        this.revisions = ['v1.0.0', 'v2.0.0'];
-        this.environments = [{ text: 'SAT', revision: 'v2.0.0' },
-            { text: 'PROD', revision: 'v1.0.0' }];
-        //Map binding with Array
         this.itemsMap = new Map();
-        this.selectedApi = new api_model_1.Api();
         //Error codes
         this.errorCodes = [];
         //Data Dictionary
         this.dataDictionary = [];
+        this.selectedApiData = {};
         this.errorCodeService.getErrorCodes().subscribe(function (errorCodes) {
             _this.errorCodes = errorCodes;
         });
         /*   this.apiService.getDataDictionary().subscribe(data => {
                this.dataDictionary = data;
            })*/
-        this.cars = [];
-        this.cars.push({ label: 'Audi', value: 'Audi' });
-        this.cars.push({ label: 'BMW', value: 'BMW' });
-        this.cars.push({ label: 'Fiat', value: 'Fiat' });
-        this.cars.push({ label: 'Ford', value: 'Ford' });
-        this.cars.push({ label: 'Honda', value: 'Honda' });
-        this.cars.push({ label: 'Jaguar', value: 'Jaguar' });
-        this.cars.push({ label: 'Mercedes', value: 'Mercedes' });
-        this.cars.push({ label: 'Renault', value: 'Renault' });
-        this.cars.push({ label: 'VW', value: 'VW' });
-        this.cars.push({ label: 'Volvo', value: 'Volvo' });
+        this.versions = [];
+        this.versions.push({ label: '--Select--', value: '-1' });
+        this.versions.push({ label: 'v1.0.0', value: 'v1.0.0' });
+        this.versions.push({ label: 'v2.0.0', value: 'v2.0.0' });
+        this.environments = [];
+        this.environments.push({ label: '--Select--', value: '-1' });
+        this.environments.push({ label: 'SAT', value: 'v2.0.0' });
+        this.environments.push({ label: 'PROD', value: 'v1.0.0' });
+        this.apiDataList = [];
+        this.apiDataList.push({ label: '--Select--', value: '-1' });
     }
-    ApiComponent.prototype.revisionOnchange = function (value) {
+    ApiComponent.prototype.versionOnChange = function (event, value) {
+        var _this = this;
+        //Reset environment dropdown to --select--
+        this.selectedEnvironment = this.environments[0].value;
+        this.apiService.getApis(this.selectedVersion).subscribe(function (apis) {
+            _this.apiDataList = [];
+            _this.apiDataList.push({ label: '--Select--', value: '-1' });
+            for (var _i = 0, apis_1 = apis; _i < apis_1.length; _i++) {
+                var api = apis_1[_i];
+                _this.apiDataList.push({ label: api.text, value: api.id });
+                _this.itemsMap.set(api.id, api);
+            }
+        });
+        //Load API dropdown values
         /*   this.items = [];
           // $('#env-select').val('-1');
    
@@ -61,6 +68,9 @@ var ApiComponent = (function () {
                }
            });
    */ };
+    ApiComponent.prototype.apiOnChange = function (event, value) {
+        this.selectedApiData = this.itemsMap.get(this.selectedApi);
+    };
     ApiComponent.prototype.envOnChange = function (value) {
         /*     this.items = [];
              //$('#revision-select').val(value);

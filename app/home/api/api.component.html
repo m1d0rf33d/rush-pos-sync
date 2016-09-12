@@ -6,33 +6,30 @@
         <nav style="background-color: #44B78B;margin: 0px; height: 50px;border: .5px solid #44B78B;padding: 10px;">
            <div class="row">
                <div class="col-md-1" style="padding: 5px;">
-                   <span style="font-weight:bold;color: white;margin-left: 5px;">Revision</span>
+                   <span style="font-weight:bold;color: white;margin-left: 5px;">Version</span>
                </div>
-               <div class="col-md-2"  style="padding: 0px;">
-                   <select id="revision-select" style="padding: 0 0 0 20px;width: 100%;height: 100%;" (change)="revisionOnchange($event.target.value)">
-                       <option value="-1">--Select version--</option>
+               <div class="col-md-1"  style="padding: 0px;">
+                 <!--  <select id="revision-select" style="padding: 0 0 0 20px;width: 100%;height: 100%;" (change)="revisionOnchange($event.target.value)">
+                       <option value="-1">&#45;&#45;Select version&#45;&#45;</option>
                        <option *ngFor="let rev of revisions">{{rev}}</option>
-                   </select>
+                   </select>-->
+                   <p-dropdown (onChange)="versionOnChange(event,value)" [options]="versions" [(ngModel)]="selectedVersion"></p-dropdown>
                </div>
 
                <div class="col-md-2" style="text-align: right;padding: 5px;">
                    <span style="font-weight:bold;color: white;">Environment</span>
                </div>
-               <div class="col-md-2" style="padding: 0px;">
-                   <select id="env-select" name="sel2" style="padding: 0 0 0 20px;width: 100%;height: 100%;" (change)="envOnChange($event.target.value)">
-                       <option value="-1">--Select Environment--</option>
-                       <option [value]="env.revision" *ngFor="let env of environments">{{env.text}}</option>
-                   </select>
+               <div class="col-md-1" style="padding: 0px;">
+                   <p-dropdown [options]="environments" [(ngModel)]="selectedEnvironment"></p-dropdown>
                </div>
                <div class="col-md-1 col-md-offset-1" style="text-align: right;padding: 5px;">
                    <span style="font-weight:bold;color: white;">Endpoint</span>
                </div>
                <div class="col-md-3">
-                   <p-dropdown filter=true [options]="cars" [(ngModel)]="selectedCar" [style]="{'width':'150px'}">
-                       <template let-car>
+                   <p-dropdown (onChange)="apiOnChange(e,val)" [options]="apiDataList" [(ngModel)]="selectedApi" [filter]="true" [style]="{'width':'300px'}">
+                       <template let-api>
                            <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-
-                               <div style="font-size:14px;float:right;margin-top:4px">{{car.label}}</div>
+                               <div style="font-size:14px;margin-top:4px">{{api.label}}</div>
                            </div>
                        </template>
                    </p-dropdown>
@@ -46,15 +43,15 @@
             <div class="col-md-5" style="margin-left: 10px;">
                <div class="row" >
                    <div class="col-md-12" style="border: 2px solid #07b094; height: 5%; background: white;padding: 5px;">
-                       <span style="font-weight: bold;color: #05904e">URL:  </span>{{selectedApi.description}}
+                       <span style="font-weight: bold;color: #05904e">URL:  </span>{{selectedApiData.description}}
                    </div>
                    <div class="col-md-12" style="margin-top: 5px;border: 2px solid #07b094; height: 5%; background: white;padding: 5px;">
-                       <span style="font-weight: bold;color:#05904e">Method: </span>{{selectedApi.method}}
+                       <span style="font-weight: bold;color:#05904e">Method: </span>{{selectedApiData.method}}
                    </div>
                    <div class="col-md-12"  style="overflow: auto;margin-top: 5px;border: 2px solid #07b094; height: 13%; background: white;padding: 5px;">
                        <span style="font-weight: bold;color: #05904e">Headers: </span>
                        <ul >
-                           <li *ngFor="let rb of selectedApi.headers">{{rb}}</li>
+                           <li *ngFor="let rb of selectedApiData.headers">{{rb}}</li>
                        </ul>
                    </div>
                </div>
@@ -62,23 +59,23 @@
             <div class="col-md-6" style="padding: 5px;margin-left: 20px;overflow:auto;border: 2px solid #07b094 ; height: 25%; background: white; ">
                 <span style="font-weight: bold;color: #05904e"> Request Body </span>
                 <ul style="list-style: none;">
-                    <li *ngFor="let rb of selectedApi.requestBody">{{rb}}</li>
+                    <li *ngFor="let rb of selectedApiData.requestBody">{{rb}}</li>
                 </ul>
             </div>
         </div>
 
        <br/>
         <div class="row">
-            <div class="col-md-5" style="adding: 5px;margin-left: 10px;height: 40%;overflow: auto;border: 2px solid #07b094; background: white;">
+            <div class="col-md-5" style="padding: 5px;margin-left: 10px;height: 40%;overflow: auto;border: 2px solid #07b094; background: white;">
                 <span style="font-weight: bold;color: #05904e"> Response Data </span>
                 <ul style="list-style: none;">
-                    <li *ngFor="let rb of selectedApi.successResponse">{{rb}}</li>
+                    <li *ngFor="let rb of selectedApiData.successResponse">{{rb}}</li>
                 </ul>
             </div>
-            <div class="col-md-6" style="adding: 5px;margin-left: 20px;height: 40%;overflow: auto;border: 2px solid #07b094; background: white;">
+            <div class="col-md-6" style="padding: 5px;margin-left: 20px;height: 40%;overflow: auto;border: 2px solid #07b094; background: white;">
                 <span style="font-weight: bold;color: #05904e"> Handled Errors</span>
                 <ul style="list-style: none;">
-                    <li *ngFor="let rb of selectedApi.failureResponse">{{rb}}</li>
+                    <li *ngFor="let rb of selectedApiData.failureResponse">{{rb}}</li>
                 </ul>
             </div>
         </div>

@@ -12,12 +12,14 @@ import {LoadingPage} from '../spinner/loading_container';
 
 export class LoginComponent extends LoadingPage {
     invalidCredentials = false;
+    displayModal = false;
 
     constructor (private authService: AuthService, private router: Router) {
         super(false);
     }
 
     login (event, username, password) {
+        this.displayModal = true;
         event.preventDefault();
         this.authService.authenticate(username, password, this);
 

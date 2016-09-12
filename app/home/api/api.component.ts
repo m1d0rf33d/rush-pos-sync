@@ -13,18 +13,21 @@ import {SelectItem} from 'primeng/primeng';
 })
  
 export class ApiComponent {
-    revisions: Array<string> = ['v1.0.0', 'v2.0.0'];
-    environments: Array<any> = [{text: 'SAT', revision: 'v2.0.0'},
-                                {text: 'PROD', revision: 'v1.0.0'}];
-    cars: SelectItem[];
+    //API versions
+    versions: SelectItem[];
+    selectedVersion: string;
 
-    selectedCar: string;
+    //Application environments
+    environments: SelectItem[];
+    selectedEnvironment: string;
+
+    //API  data
+    apiDataList: SelectItem[];
+    selectedApi: string;
 
     //Map binding with Array
+    selectedApiData: any;
     itemsMap: Map<string, any> = new Map<string,any>();
-
-    selectedApi: Api = new Api();
-    selectedCity: string;
 
     //Error codes
     errorCodes: Array<ErrorCode> = [];
@@ -32,6 +35,9 @@ export class ApiComponent {
     dataDictionary: Array<any> = [];
 
     constructor(private apiService: ApiService, private errorCodeService: ErrorCodeService) {
+
+        this.selectedApiData = {};
+
         this.errorCodeService.getErrorCodes().subscribe(errorCodes => {
             this.errorCodes = errorCodes;
         });
@@ -39,22 +45,35 @@ export class ApiComponent {
      /*   this.apiService.getDataDictionary().subscribe(data => {
             this.dataDictionary = data;
         })*/
+        this.versions = [];
+        this.versions.push({label: '--Select--', value: '-1'});
+        this.versions.push({label: 'v1.0.0', value: 'v1.0.0'});
+        this.versions.push({label: 'v2.0.0', value: 'v2.0.0'});
 
-        this.cars = [];
-        this.cars.push({label: 'Audi', value: 'Audi'});
-        this.cars.push({label: 'BMW', value: 'BMW'});
-        this.cars.push({label: 'Fiat', value: 'Fiat'});
-        this.cars.push({label: 'Ford', value: 'Ford'});
-        this.cars.push({label: 'Honda', value: 'Honda'});
-        this.cars.push({label: 'Jaguar', value: 'Jaguar'});
-        this.cars.push({label: 'Mercedes', value: 'Mercedes'});
-        this.cars.push({label: 'Renault', value: 'Renault'});
-        this.cars.push({label: 'VW', value: 'VW'});
-        this.cars.push({label: 'Volvo', value: 'Volvo'});
+        this.environments = [];
+        this.environments.push({label: '--Select--', value: '-1'});
+        this.environments.push({label: 'SAT', value: 'v2.0.0'});
+        this.environments.push({label: 'PROD', value: 'v1.0.0'});
+
+        this.apiDataList = [];
+        this.apiDataList.push({label: '--Select--', value: '-1'});
     }
 
 
-    revisionOnchange(value) {
+    versionOnChange(event,value) {
+       //Reset environment dropdown to --select--
+        this.selectedEnvironment = this.environments[0].value;
+
+        this.apiService.getApis(this.selectedVersion).subscribe(apis => {
+            this.apiDataList = [];
+            this.apiDataList.push({label: '--Select--', value: '-1'});
+            for (let api of apis) {
+                this.apiDataList.push({label: api.text, value: api.id});
+                this.itemsMap.set(api.id, api);
+            }
+        });
+
+        //Load API dropdown values
      /*   this.items = [];
        // $('#env-select').val('-1');
 
@@ -70,7 +89,9 @@ export class ApiComponent {
             }
         });
 */    }
-
+    apiOnChange(event,value) {
+        this.selectedApiData = this.itemsMap.get(this.selectedApi);
+    }
     envOnChange(value) {
   /*     this.items = [];
        //$('#revision-select').val(value);

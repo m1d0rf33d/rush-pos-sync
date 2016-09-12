@@ -11,17 +11,17 @@ import {routing, appRoutingProviders} from '../routes';
 
 import {CommonModule} from '@angular/common';
 import {DropdownModule} from 'primeng/primeng';
-import { FORM_DIRECTIVES } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [routing,CommonModule,DropdownModule],
+    imports: [routing,CommonModule,DropdownModule, FormsModule],
     declarations: [HomeComponent,
         ApiComponent,
         AccountComponent,
         ChangeLogsComponent,
         ErrorCodesComponent,
         LogsComponent,
-        ReadMeComponent,FORM_DIRECTIVES],
+        ReadMeComponent],
     providers: [appRoutingProviders]
 })
 
