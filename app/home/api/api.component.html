@@ -20,7 +20,7 @@
                    <span style="font-weight:bold;color: white;">Environment</span>
                </div>
                <div class="col-md-1" style="padding: 0px;">
-                   <p-dropdown [options]="environments" [(ngModel)]="selectedEnvironment"></p-dropdown>
+                   <p-dropdown (onChange)="envOnChange(e,val)" [options]="environments" [(ngModel)]="selectedEnvironment"></p-dropdown>
                </div>
                <div class="col-md-1 col-md-offset-1" style="text-align: right;padding: 5px;">
                    <span style="font-weight:bold;color: white;">Endpoint</span>

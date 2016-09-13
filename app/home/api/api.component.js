@@ -25,9 +25,9 @@ var ApiComponent = (function () {
         this.errorCodeService.getErrorCodes().subscribe(function (errorCodes) {
             _this.errorCodes = errorCodes;
         });
-        /*   this.apiService.getDataDictionary().subscribe(data => {
-               this.dataDictionary = data;
-           })*/
+        this.apiService.getDataDictionary().subscribe(function (data) {
+            _this.dataDictionary = data;
+        });
         this.versions = [];
         this.versions.push({ label: '--Select--', value: '-1' });
         this.versions.push({ label: 'v1.0.0', value: 'v1.0.0' });
@@ -52,35 +52,28 @@ var ApiComponent = (function () {
                 _this.itemsMap.set(api.id, api);
             }
         });
-        //Load API dropdown values
-        /*   this.items = [];
-          // $('#env-select').val('-1');
-   
-           if (value == -1) {
-               this.items = [];
-               return;
-           }
-           this.apiService.getApis(value).subscribe(apis => {
-               this.items = apis;
-               for (let item of this.items) {
-                   //Since ng2-select cannot hold the complete data we will bind it to another container
-                   this.itemsMap.set(item.id, item);
-               }
-           });
-   */ };
+    };
     ApiComponent.prototype.apiOnChange = function (event, value) {
         this.selectedApiData = this.itemsMap.get(this.selectedApi);
     };
-    ApiComponent.prototype.envOnChange = function (value) {
-        /*     this.items = [];
-             //$('#revision-select').val(value);
-              this.apiService.getApis(value).subscribe(apis => {
-                  this.items = apis;
-                  for (let item of this.items) {
-                      //Since ng2-select cannot hold the complete data we will bind it to another container
-                      this.itemsMap.set(item.id, item);
-                  }
-              });*/
+    ApiComponent.prototype.envOnChange = function (event, value) {
+        var _this = this;
+        if (this.selectedEnvironment == '-1') {
+            this.apiDataList = [];
+            this.apiDataList.push({ label: '--Select--', value: '-1' });
+            this.selectedVersion = this.versions[0].value;
+            return;
+        }
+        this.selectedVersion = this.selectedEnvironment;
+        this.apiService.getApis(this.selectedVersion).subscribe(function (apis) {
+            _this.apiDataList = [];
+            _this.apiDataList.push({ label: '--Select--', value: '-1' });
+            for (var _i = 0, apis_2 = apis; _i < apis_2.length; _i++) {
+                var api = apis_2[_i];
+                _this.apiDataList.push({ label: api.text, value: api.id });
+                _this.itemsMap.set(api.id, api);
+            }
+        });
     };
     ApiComponent = __decorate([
         core_1.Component({

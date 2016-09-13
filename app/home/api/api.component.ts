@@ -42,9 +42,9 @@ export class ApiComponent {
             this.errorCodes = errorCodes;
         });
 
-     /*   this.apiService.getDataDictionary().subscribe(data => {
+        this.apiService.getDataDictionary().subscribe(data => {
             this.dataDictionary = data;
-        })*/
+        })
         this.versions = [];
         this.versions.push({label: '--Select--', value: '-1'});
         this.versions.push({label: 'v1.0.0', value: 'v1.0.0'});
@@ -57,6 +57,7 @@ export class ApiComponent {
 
         this.apiDataList = [];
         this.apiDataList.push({label: '--Select--', value: '-1'});
+
     }
 
 
@@ -72,36 +73,28 @@ export class ApiComponent {
                 this.itemsMap.set(api.id, api);
             }
         });
-
-        //Load API dropdown values
-     /*   this.items = [];
-       // $('#env-select').val('-1');
-
-        if (value == -1) {
-            this.items = [];
-            return;
-        }
-        this.apiService.getApis(value).subscribe(apis => {
-            this.items = apis;
-            for (let item of this.items) {
-                //Since ng2-select cannot hold the complete data we will bind it to another container
-                this.itemsMap.set(item.id, item);
-            }
-        });
-*/    }
+   }
     apiOnChange(event,value) {
         this.selectedApiData = this.itemsMap.get(this.selectedApi);
     }
-    envOnChange(value) {
-  /*     this.items = [];
-       //$('#revision-select').val(value);
-        this.apiService.getApis(value).subscribe(apis => {
-            this.items = apis;
-            for (let item of this.items) {
-                //Since ng2-select cannot hold the complete data we will bind it to another container
-                this.itemsMap.set(item.id, item);
+
+    envOnChange(event,value) {
+        if (this.selectedEnvironment == '-1') {
+            this.apiDataList = [];
+            this.apiDataList.push({label: '--Select--', value: '-1'});
+            this.selectedVersion = this.versions[0].value;
+            return;
+        }
+
+        this.selectedVersion = this.selectedEnvironment;
+        this.apiService.getApis(this.selectedVersion).subscribe(apis => {
+            this.apiDataList = [];
+            this.apiDataList.push({label: '--Select--', value: '-1'});
+            for (let api of apis) {
+                this.apiDataList.push({label: api.text, value: api.id});
+                this.itemsMap.set(api.id, api);
             }
-        });*/
+        });
     }
 
 
