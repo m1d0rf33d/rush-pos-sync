@@ -15,11 +15,11 @@ var ApiService = (function () {
         this.http = http;
     }
     ApiService.prototype.getApis = function (revision) {
-        return this.http.get('http://parkninja-dev/app/home/api/api-' + revision + '.json', {})
+        return this.http.get('http://52.74.190.173/parkninja-dev/app/home/api/api-' + revision + '.json', {})
             .map(function (res) { return res.json(); });
     };
     ApiService.prototype.getDataDictionary = function () {
-        return this.http.get('http://parkninja-dev/app/home/api/data.dictionary.json', {})
+        return this.http.get('http://52.74.190.173/parkninja-dev/app/home/api/data.dictionary.json', {})
             .map(function (res) { return res.json(); });
     };
     ApiService = __decorate([
