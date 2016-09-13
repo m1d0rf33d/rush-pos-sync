@@ -6,7 +6,7 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': '/parkninja-dev/node_modules/'
     },
     // map tells the System loader where to look for things
     map: {
