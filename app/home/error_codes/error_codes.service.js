@@ -15,7 +15,7 @@ var ErrorCodeService = (function () {
         this.http = http;
     }
     ErrorCodeService.prototype.getErrorCodes = function () {
-        return this.http.get('http://localhost:3000/app/home/error_codes/error_codes.json', {})
+        return this.http.get('http://parkninja-dev/app/home/error_codes/error_codes.json', {})
             .map(function (res) { return res.json(); });
     };
     ErrorCodeService = __decorate([
