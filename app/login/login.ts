@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import {LoadingContainer} from '../spinner/loading_container';
 import {MessagesModule} from 'primeng/primeng';
 
+
 @NgModule({
     imports: [CommonModule, MessagesModule],
     declarations: [LoadingContainer, LoginComponent ],
