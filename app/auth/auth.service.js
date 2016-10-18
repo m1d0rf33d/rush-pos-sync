@@ -23,8 +23,8 @@ var AuthService = (function () {
         loginComponent.standby();
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        this.http.post('http://52.74.190.173:8080/parkninja-core/oauth/token?grant_type=password&username=' + username + '&password=' +
-            password + '&client_id=parkwise', {}).subscribe(function (data) {
+        this.http.post('http://localhost:8080/rush-pos-sync/oauth/token?grant_type=password&username=' + username + '&password=' +
+            password + '&client_id=rush', {}).subscribe(function (data) {
             if (data.json().access_token) {
                 window.localStorage.setItem('auth_key', data.json().access_token);
                 _this.router.navigate(['index']);

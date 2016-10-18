@@ -6,7 +6,7 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': '/parkninja-dev/node_modules/'
+      'npm:': '/rush-pos-sync/node_modules/'
     },
     // map tells the System loader where to look for things
     map: {
