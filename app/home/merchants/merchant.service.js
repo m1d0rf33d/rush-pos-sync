@@ -11,19 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var LogsService = (function () {
-    function LogsService(http) {
+require('rxjs/add/operator/catch');
+var MerchantService = (function () {
+    function MerchantService(http) {
         this.http = http;
     }
-    LogsService.prototype.getLogs = function (logType) {
-        return this.http.get('http://52.74.190.173:8080/parkninja-core/dev/logs/' + logType, {})
-            .map(function (res) { return res.json(); });
+    MerchantService.prototype.getMerchants = function () {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
+        this.http.get('http://localhost:8080/rush-pos-sync/api/merchants/', headers).subscribe(function (data) {
+            alert(data);
+        });
     };
-    LogsService = __decorate([
+    MerchantService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], LogsService);
-    return LogsService;
+    ], MerchantService);
+    return MerchantService;
 }());
-exports.LogsService = LogsService;
-//# sourceMappingURL=logs.service.js.map
+exports.MerchantService = MerchantService;
+//# sourceMappingURL=merchant.service.js.map

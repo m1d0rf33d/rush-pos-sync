@@ -9,19 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var merchant_service_1 = require('../merchants/merchant.service');
 var MerchantComponent = (function () {
-    function MerchantComponent() {
+    function MerchantComponent(merchantService) {
+        this.merchantService = merchantService;
         this.data = [];
-        this.data.push({ name: 'erwin', city: 'city', age: '12', email: 'sad@gmail.com' });
+        merchantService.getMerchants();
     }
     MerchantComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'app-merchants',
             templateUrl: 'merchant.html',
-            providers: []
+            providers: [merchant_service_1.MerchantService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [merchant_service_1.MerchantService])
     ], MerchantComponent);
     return MerchantComponent;
 }());

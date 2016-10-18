@@ -1,20 +1,22 @@
 import {Component} from '@angular/core';
-
+import {MerchantService} from '../merchants/merchant.service';
 
 @Component({
     moduleId: module.id,
     selector: 'app-merchants',
     templateUrl: 'merchant.html',
-    providers:[]
+    providers:[MerchantService]
 })
 
 export class MerchantComponent {
 
     data: any[];
 
-    constructor() {
+    constructor(private merchantService:MerchantService) {
         this.data = [];
-        this.data.push({name: 'erwin', city: 'city', age: '12', email: 'sad@gmail.com'});
+        merchantService.getMerchants();
         
     }
+
+    
 }

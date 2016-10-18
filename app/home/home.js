@@ -11,12 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //HomeModule Config
 var core_1 = require('@angular/core');
 var home_component_1 = require('../home/home.component');
-var api_component_1 = require('../home/api/api.component');
 var routes_1 = require('../routes');
 var common_1 = require('@angular/common');
-var primeng_1 = require('primeng/primeng');
 var forms_1 = require('@angular/forms');
-var primeng_2 = require('primeng/primeng');
 var angular2_datatable_1 = require('angular2-datatable');
 var merchant_component_1 = require('../home/merchants/merchant.component');
 var HomeModule = (function () {
@@ -24,8 +21,8 @@ var HomeModule = (function () {
     }
     HomeModule = __decorate([
         core_1.NgModule({
-            imports: [routes_1.routing, common_1.CommonModule, primeng_1.DropdownModule, forms_1.FormsModule, primeng_2.DialogModule, angular2_datatable_1.DataTableModule],
-            declarations: [home_component_1.HomeComponent, api_component_1.ApiComponent, merchant_component_1.MerchantComponent],
+            imports: [routes_1.routing, common_1.CommonModule, forms_1.FormsModule, angular2_datatable_1.DataTableModule],
+            declarations: [home_component_1.HomeComponent, merchant_component_1.MerchantComponent],
             providers: [routes_1.appRoutingProviders]
         }), 
         __metadata('design:paramtypes', [])
