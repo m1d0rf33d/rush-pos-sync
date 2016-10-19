@@ -16,7 +16,7 @@ export class AuthService {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        this.http.post('http://localhost:8080/rush-pos-sync/oauth/token?grant_type=password&username=' + username + '&password=' +
+        this.http.post('http://52.74.190.173:8080/rush-pos-sync/oauth/token?grant_type=password&username=' + username + '&password=' +
             password + '&client_id=rush', {}).subscribe(
             data => {
                 if (data.json().access_token) {
