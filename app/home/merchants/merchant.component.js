@@ -21,12 +21,44 @@ var MerchantComponent = (function () {
             customerApiKey: '',
             customerApiSecret: ''
         };
+        this.display = false;
+        this.selectedMerchant = {
+            name: '',
+            merchantApiKey: '',
+            merchantApiSecret: '',
+            customerApiKey: '',
+            customerApiSecret: '',
+            id: '',
+            status: ''
+        };
         this.merchants = [];
         this.merchantService.getMerchants().subscribe(function (data) { return _this.merchants = data.data; });
     }
     MerchantComponent.prototype.update = function (event, merchant) {
+        var _this = this;
         event.preventDefault();
-        alert('Under development');
+        //validate fields
+        if (merchant.name === '' ||
+            merchant.merchantApiKey === '' ||
+            merchant.merchantApiSecret === '' ||
+            merchant.customerApiKey === '' ||
+            merchant.customerApiSecret === '') {
+            alert('All fields are required.');
+            return;
+        }
+        this.merchantService.create(merchant)
+            .subscribe(function (data) {
+            console.log(data);
+            if (data.responseCode === '200') {
+                _this.clearMerchant();
+                alert('Merchant updated.');
+                _this.merchantService.getMerchants().subscribe(function (data) { return _this.merchants = data.data; });
+                _this.display = false;
+            }
+            else {
+                alert('Merchant create failed. Please contact system administrator.');
+            }
+        });
     };
     MerchantComponent.prototype.create = function (event) {
         var _this = this;
@@ -65,6 +97,18 @@ var MerchantComponent = (function () {
             customerApiKey: '',
             customerApiSecret: ''
         };
+    };
+    MerchantComponent.prototype.showDialog = function (merchant) {
+        this.selectedMerchant = {
+            name: merchant.name,
+            merchantApiKey: merchant.merchantApiKey,
+            merchantApiSecret: merchant.merchantApiSecret,
+            customerApiKey: merchant.customerApiKey,
+            customerApiSecret: merchant.customerApiSecret,
+            id: merchant.id,
+            status: merchant.status
+        };
+        this.display = true;
     };
     MerchantComponent = __decorate([
         core_1.Component({

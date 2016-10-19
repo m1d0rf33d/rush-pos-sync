@@ -30,7 +30,8 @@
     "bootstrap": "^3.3.6",
     "primeng": "",
     "angular2-datatable": "",
-    "lodash": ""
+    "lodash": "",
+    "jquery": ""
   },
   "devDependencies": {
     "concurrently": "^2.2.0",

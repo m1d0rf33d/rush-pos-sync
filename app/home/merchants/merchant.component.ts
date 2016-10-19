@@ -10,7 +10,7 @@ import {Http, Headers, Response} from '@angular/http';
 })
 
 export class MerchantComponent {
-
+  
     merchants: any[];
     merchant = {
         name: '',
@@ -28,7 +28,27 @@ export class MerchantComponent {
 
     update(event, merchant) {
         event.preventDefault();
-        alert('Under development');
+        //validate fields
+        if (merchant.name === '' || 
+            merchant.merchantApiKey === '' ||
+            merchant.merchantApiSecret === '' ||
+            merchant.customerApiKey === '' ||
+            merchant.customerApiSecret === '') {
+            alert('All fields are required.');
+            return;
+        }
+       this.merchantService.create(merchant)
+       .subscribe(data => {
+               console.log(data);
+              if (data.responseCode === '200') {
+                  this.clearMerchant();
+                  alert('Merchant updated.');
+                  this.merchantService.getMerchants().subscribe(data => this.merchants = data.data);
+                  this.display = false;
+              } else {
+                  alert('Merchant create failed. Please contact system administrator.');
+              }
+       });
     }        
 
     create(event) {
@@ -69,5 +89,29 @@ export class MerchantComponent {
             customerApiSecret: ''
         }
 
+    }
+
+    display: boolean = false;
+    selectedMerchant =  {
+        name: '',
+        merchantApiKey: '',
+        merchantApiSecret: '',
+        customerApiKey: '',
+        customerApiSecret: '',
+        id: '',
+        status: ''
+    }
+
+    showDialog(merchant) {
+        this.selectedMerchant = {
+            name: merchant.name,
+            merchantApiKey: merchant.merchantApiKey,
+            merchantApiSecret: merchant.merchantApiSecret,
+            customerApiKey: merchant.customerApiKey,
+            customerApiSecret: merchant.customerApiSecret,
+            id: merchant.id,
+            status: merchant.status
+        }
+        this.display = true;
     }
 }

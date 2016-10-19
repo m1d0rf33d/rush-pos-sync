@@ -43,3 +43,8 @@ pre {
 span, label, a{
     font-family: Special Elite !important;
 }
+
+.ui-dialog {
+    background-color: white !important;
+    overflow: none;
+}

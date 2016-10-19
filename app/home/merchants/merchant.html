@@ -62,7 +62,9 @@
         <td style="word-wrap:break-word;">{{item.customerApiKey}}</td>
         <td style="word-wrap:break-word;">{{item.customerApiSecret}}</td>
         <td style="word-wrap:break-word;"> {{item.status}}</td>
-        <td style="word-wrap:break-word;"><a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;" href="" (click)="update($event,item.name)">UPDATE</a></td>
+        <td style="word-wrap:break-word;">
+       <button style="background-color: #e98300;padding:5px;" type="text" (click)="showDialog(item)" pButton icon="fa-external-link-square" label="Show"><font size="3" color="white"><b>UPDATE</b></font></button>
+        
     </tr>
     </tbody>
     <tfoot>
@@ -73,5 +75,41 @@
     </tr>
     </tfoot>
 </table>
+
+<p-dialog width="550" [(visible)]="display" modal="modal" showEffect="fade">
+   <label><font size="4">UPDATE MERCHANT DETAILS</font></label>
+   <hr/>
+<div class="row" style="width: 500;">
+       <div class="col-sm-6" style="margin-top: 5px;">
+            <label> Name: </label><br/><br/>
+            <label> Merchant API Key: </label><br/><br/>
+            <label> Merchant API Secret: </label><br/><br/>
+            <label> Customer API Key: </label><br/><br/>
+            <label> Customer API Secret: </label><br/><br/>
+            <label> Status:</label>
+        </div>     
+    <div class="col-sm-6">
+        <input type="text" [(ngModel)]="selectedMerchant.name"/> <br/><br/>
+        <input type="text" [(ngModel)]="selectedMerchant.merchantApiKey"/> <br/><br/>
+        <input type="text" [(ngModel)]="selectedMerchant.merchantApiSecret"/> <br/><br/>
+        <input type="text" [(ngModel)]="selectedMerchant.customerApiKey"/> <br/><br/>
+        <input type="text" [(ngModel)]="selectedMerchant.customerApiSecret"/> <br/><br/>
+        <select [(ngModel)]="selectedMerchant.status">
+            <option value="ACTIVE">ACTIVE</option>
+            <option value="INACTIVE">INACTIVE</option>
+        </select>
+    </div>
+</div>
+<br/><br/>
+<div class="row" style="width: 500;">
+    <div class="col-sm-4">
+
+    </div>
+   <div class="col-sm-8">
+     <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="update($event,selectedMerchant)">SAVE</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="display=false" >CANCEL</a>
+   </div>
+</div>
+      <br/><br/>
+</p-dialog>
 
 </div>

@@ -8,8 +8,10 @@ import { FormsModule } from '@angular/forms';
 
 import {DataTableModule} from 'angular2-datatable';
 import {MerchantComponent} from '../home/merchants/merchant.component';
+import {DialogModule} from 'primeng/primeng';
+
 @NgModule({
-    imports: [routing,CommonModule, FormsModule, DataTableModule],
+    imports: [routing,CommonModule, FormsModule, DataTableModule, DialogModule],
     declarations: [HomeComponent, MerchantComponent],
     providers: [appRoutingProviders]
 })
