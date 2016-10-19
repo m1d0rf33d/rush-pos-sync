@@ -25,6 +25,6 @@ export class AuthService {
                 }
                 loginComponent.ready();
             },
-            error => {  loginComponent.ready(); loginComponent.invalidCredentials = true;});
+            error => { loginComponent.ready(); alert('Invalid Credentials');});
     }
 }

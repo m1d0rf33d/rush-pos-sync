@@ -1,6 +1,34 @@
 <div>
 
-<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+<label><font size=6>Merchant Management</font></label>
+<hr />
+<div class=row>
+<div class="col-sm-2" style="margin-top: 5px;">
+    <label> Name: </label><br/><br/>
+    <label> Merchant API Key: </label><br/><br/>
+    <label> Merchant API Secret: </label><br/><br/>
+    <label> Customer API Key: </label><br/><br/>
+    <label> Customer API Secret: </label>
+</div>
+<div class="col-sm-4">
+    <input type="text" [(ngModel)]="merchant.name"/> <br/><br/>
+<input type="text" [(ngModel)]="merchant.merchantApiKey"/> <br/><br/>
+<input type="text" [(ngModel)]="merchant.merchantApiSecret"/> <br/><br/>
+<input type="text" [(ngModel)]="merchant.customerApiKey"/> <br/><br/>
+<input type="text" [(ngModel)]="merchant.customerApiSecret"/> <br/>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4" style="text-align:center;">
+<br/>
+    <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 80px;" href="" (click)="create($event)">ADD</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 80px;" href="" (click)="clear($event)">CLEAR</a>
+</div>
+</div>
+
+
+
+<br/><br/><br/>
+<table style="table-layout:fixed;" class="table table-striped" [mfData]="merchants" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
     <tr>
         <th style="width: 10%">
@@ -12,21 +40,29 @@
         <th style="width: 10%">
             <mfDefaultSorter by="age">API Secret</mfDefaultSorter>
         </th>
-       <th style="width: 10%">
+       <th style="width: 13%">
             <mfDefaultSorter by="email">Customer API Key</mfDefaultSorter>
         </th>
-        <th style="width: 10%">
+        <th style="width: 13%">
             <mfDefaultSorter by="age">Customer API Secret</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+            <mfDefaultSorter by="age">Status</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+            <mfDefaultSorter by="age"></mfDefaultSorter>
         </th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of mf.data">
         <td>{{item.name}}</td>
-        <td>{{item.merchantApiKey}}</td>
-        <td>{{item.merchantApiSecret}}</td>
-        <td>{{item.customerApiKey}}</td>
-        <td>{{item.customerApiSecret}}</td>
+        <td style="word-wrap:break-word;">{{item.merchantApiKey}}</td>
+        <td style="word-wrap:break-word;">{{item.merchantApiSecret}}</td>
+        <td style="word-wrap:break-word;">{{item.customerApiKey}}</td>
+        <td style="word-wrap:break-word;">{{item.customerApiSecret}}</td>
+        <td style="word-wrap:break-word;"> {{item.status}}</td>
+        <td style="word-wrap:break-word;"><a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;" href="" (click)="update($event,item.name)">UPDATE</a></td>
     </tr>
     </tbody>
     <tfoot>

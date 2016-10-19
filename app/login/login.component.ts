@@ -19,21 +19,9 @@ export class LoginComponent extends LoadingPage {
     }
 
     login (event, username, password) {
-        this.showError();
+     
         event.preventDefault();
         this.authService.authenticate(username, password, this);
-
-    }
-
-
-
-    showError() {
-        this.msgs = [];
-        this.msgs.push({severity:'error', summary:'Access Denied', detail:''});
-    }
-
-    hideError() {
-        this.msgs = [];
     }
 
 }

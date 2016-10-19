@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {AuthManager} from './auth/auth.manager';
-import {ApiComponent} from './home/api/api.component';
 import {MerchantComponent} from './home/merchants/merchant.component';
 
 

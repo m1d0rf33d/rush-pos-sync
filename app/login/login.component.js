@@ -27,16 +27,8 @@ var LoginComponent = (function (_super) {
         this.msgs = [];
     }
     LoginComponent.prototype.login = function (event, username, password) {
-        this.showError();
         event.preventDefault();
         this.authService.authenticate(username, password, this);
-    };
-    LoginComponent.prototype.showError = function () {
-        this.msgs = [];
-        this.msgs.push({ severity: 'error', summary: 'Access Denied', detail: '' });
-    };
-    LoginComponent.prototype.hideError = function () {
-        this.msgs = [];
     };
     LoginComponent = __decorate([
         core_1.Component({

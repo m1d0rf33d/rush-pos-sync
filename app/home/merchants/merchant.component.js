@@ -12,10 +12,60 @@ var core_1 = require('@angular/core');
 var merchant_service_1 = require('../merchants/merchant.service');
 var MerchantComponent = (function () {
     function MerchantComponent(merchantService) {
+        var _this = this;
         this.merchantService = merchantService;
-        this.data = [];
-        merchantService.getMerchants();
+        this.merchant = {
+            name: '',
+            merchantApiKey: '',
+            merchantApiSecret: '',
+            customerApiKey: '',
+            customerApiSecret: ''
+        };
+        this.merchants = [];
+        this.merchantService.getMerchants().subscribe(function (data) { return _this.merchants = data.data; });
     }
+    MerchantComponent.prototype.update = function (event, merchant) {
+        event.preventDefault();
+        alert('Under development');
+    };
+    MerchantComponent.prototype.create = function (event) {
+        var _this = this;
+        event.preventDefault();
+        //validate fields
+        if (this.merchant.name === '' ||
+            this.merchant.merchantApiKey === '' ||
+            this.merchant.merchantApiSecret === '' ||
+            this.merchant.customerApiKey === '' ||
+            this.merchant.customerApiSecret === '') {
+            alert('All fields are required.');
+            return;
+        }
+        this.merchantService.create(this.merchant)
+            .subscribe(function (data) {
+            console.log(data);
+            if (data.responseCode === '200') {
+                _this.clearMerchant();
+                alert('Merchant created.');
+                _this.merchantService.getMerchants().subscribe(function (data) { return _this.merchants = data.data; });
+            }
+            else {
+                alert('Merchant create failed. Please contact system administrator.');
+            }
+        });
+    };
+    MerchantComponent.prototype.clear = function ($event) {
+        event.preventDefault();
+        this.clearMerchant();
+    };
+    MerchantComponent.prototype.clearMerchant = function () {
+        this.merchant = {
+            name: '',
+            merchantApiKey: '',
+            merchantApiSecret: '',
+            customerApiKey: '',
+            customerApiSecret: ''
+        };
+    };
     MerchantComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

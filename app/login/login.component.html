@@ -1,19 +1,16 @@
 <div style="text-align: center;margin-top: 10%;">
 
         <div style="font-variant: normal;font-family: Special Elite; !important;font-weight: 700;text-rendering: optimizeLegibility;line-height: 26.4px;font-size: 34px;">
-           Rush
+           Rush POS Sync
         </div>
         <br/>
 
-    <div style="width: 30%;margin-left: 35%;">
-        <p-messages [value]="msgs"></p-messages>
-    </div>
     <div [ngSwitch]="loading">
         <div *ngSwitchCase="false">
             <form (submit)="login($event, username.value, password.value)">
                 <input style="width: 15%;background: white; padding: 10px;" type="text" #username placeholder="username"/> <br/><br/>
                 <input style="width: 15%;background: white; padding: 10px;" type="password" #password placeholder="password"/><br/><br/>
-                <button  type="submit" style="width: 15%;background: #ffb600; border: 1px solid seagreen; padding: 10px;"><span>LOGIN</span></button>
+                <button  type="submit" style="width: 15%;background: #ffb600;padding-top:10px;"><label><font size=4 color="white">LOGIN</font></label></button>
             </form>
         </div>
         <div *ngSwitchCase="true">

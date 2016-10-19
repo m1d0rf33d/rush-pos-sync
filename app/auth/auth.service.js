@@ -30,7 +30,7 @@ var AuthService = (function () {
                 _this.router.navigate(['index']);
             }
             loginComponent.ready();
-        }, function (error) { loginComponent.ready(); loginComponent.invalidCredentials = true; });
+        }, function (error) { loginComponent.ready(); alert('Invalid Credentials'); });
     };
     AuthService = __decorate([
         core_1.Injectable(), 
