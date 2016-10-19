@@ -20,21 +20,21 @@ var MerchantService = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
-        return this.http.get('http://localhost:8080/rush-pos-sync/merchant/', { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.get('http://52.74.190.173:8080/rush-pos-sync/merchant/', { headers: headers }).map(function (res) { return res.json(); });
     };
     MerchantService.prototype.create = function (merchant) {
         var body = JSON.stringify(merchant);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         console.log(body);
-        return this.http.post('http://localhost:8080/rush-pos-sync/merchant/', body, options).map(function (res) { return res.json(); });
+        return this.http.post('http://52.74.190.173:8080/rush-pos-sync/merchant/', body, options).map(function (res) { return res.json(); });
     };
     MerchantService.prototype.update = function (merchant) {
         var body = JSON.stringify(merchant);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         console.log(body);
-        return this.http.post('http://localhost:8080/rush-pos-sync/merchant/', body, options).map(function (res) { return res.json(); });
+        return this.http.post('http://52.74.190.173:8080/rush-pos-sync/merchant/', body, options).map(function (res) { return res.json(); });
     };
     MerchantService = __decorate([
         core_1.Injectable(), 
