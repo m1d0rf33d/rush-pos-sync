@@ -22,8 +22,11 @@ export class MerchantComponent {
 
     constructor(private merchantService:MerchantService) {
         this.merchants = [];
-        this.merchantService.getMerchants().subscribe(data => this.merchants = data.data);
-        
+        this.merchantService.getMerchants().subscribe(data =>{
+          this.merchants = data.data
+          console.log(this.merchants);
+        });
+         
     }
 
     update(event, merchant) {
@@ -102,7 +105,8 @@ export class MerchantComponent {
         status: ''
     }
 
-    showDialog(merchant) {
+    showDialog(event, merchant) {
+        event.preventDefault();
         this.selectedMerchant = {
             name: merchant.name,
             merchantApiKey: merchant.merchantApiKey,

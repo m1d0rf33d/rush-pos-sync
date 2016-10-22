@@ -20,14 +20,14 @@ export class MerchantService {
         let body = JSON.stringify(merchant);
        
         let headers = new Headers({ 'Content-Type': 'application/json' });
-        
+        headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
         let options = new RequestOptions({ headers: headers });
         console.log(body);
         return this.http.post(AppConfig.GET_MERCHANTS_URL, body, options).map((res: Response) => res.json());
     
     }
     update(merchant) {
-
+        event.preventDefault();
         let body = JSON.stringify(merchant);
        
         let headers = new Headers({ 'Content-Type': 'application/json' });

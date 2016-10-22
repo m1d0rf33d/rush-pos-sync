@@ -65,8 +65,8 @@
         <td style="word-wrap:break-word;">{{item.customerApiSecret}}</td>
         <td style="word-wrap:break-word;"> {{item.status}}</td>
         <td style="word-wrap:break-word;">
-       <button style="background-color: #e98300;padding:5px;" type="text" (click)="showDialog(item)" pButton icon="fa-external-link-square" label="Show"><font size="3" color="white"><b>UPDATE</b></font></button>
-        
+       <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #F0B003;width: 100px;" href="" (click)="showDialog($event,item)">UPDATE</a>
+        </td>
     </tr>
     </tbody>
     <tfoot>

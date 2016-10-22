@@ -32,7 +32,10 @@ var MerchantComponent = (function () {
             status: ''
         };
         this.merchants = [];
-        this.merchantService.getMerchants().subscribe(function (data) { return _this.merchants = data.data; });
+        this.merchantService.getMerchants().subscribe(function (data) {
+            _this.merchants = data.data;
+            console.log(_this.merchants);
+        });
     }
     MerchantComponent.prototype.update = function (event, merchant) {
         var _this = this;
@@ -98,7 +101,8 @@ var MerchantComponent = (function () {
             customerApiSecret: ''
         };
     };
-    MerchantComponent.prototype.showDialog = function (merchant) {
+    MerchantComponent.prototype.showDialog = function (event, merchant) {
+        event.preventDefault();
         this.selectedMerchant = {
             name: merchant.name,
             merchantApiKey: merchant.merchantApiKey,

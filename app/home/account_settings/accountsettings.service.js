@@ -13,37 +13,28 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var AppConfig_1 = require('../../config/AppConfig');
-var MerchantService = (function () {
-    function MerchantService(http) {
+var AccountSettingsService = (function () {
+    function AccountSettingsService(http) {
         this.http = http;
     }
-    MerchantService.prototype.getMerchants = function () {
-        var headers = new http_1.Headers();
-        headers.append('Content-type', 'application/json');
-        headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
-        return this.http.get(AppConfig_1.AppConfig.GET_MERCHANTS_URL, { headers: headers }).map(function (res) { return res.json(); });
-    };
-    MerchantService.prototype.create = function (merchant) {
-        var body = JSON.stringify(merchant);
+    AccountSettingsService.prototype.getMerchantAccounts = function (merchantId) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
         var options = new http_1.RequestOptions({ headers: headers });
-        console.log(body);
-        return this.http.post(AppConfig_1.AppConfig.GET_MERCHANTS_URL, body, options).map(function (res) { return res.json(); });
+        return this.http.get(AppConfig_1.AppConfig.GET_MERCHANTS_ACCOUNTS_URL.replace(':merchantId', merchantId), options).map(function (res) { return res.json(); });
     };
-    MerchantService.prototype.update = function (merchant) {
-        event.preventDefault();
-        var body = JSON.stringify(merchant);
+    AccountSettingsService.prototype.updateMerchantAccounts = function (account) {
+        var body = JSON.stringify(account);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
         var options = new http_1.RequestOptions({ headers: headers });
-        console.log(body);
-        return this.http.post(AppConfig_1.AppConfig.GET_MERCHANTS_URL, body, options).map(function (res) { return res.json(); });
+        return this.http.post(AppConfig_1.AppConfig.UPDATE_ACCOUNT_URL, body, options).map(function (res) { return res.json(); });
     };
-    MerchantService = __decorate([
+    AccountSettingsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], MerchantService);
-    return MerchantService;
+    ], AccountSettingsService);
+    return AccountSettingsService;
 }());
-exports.MerchantService = MerchantService;
-//# sourceMappingURL=merchant.service.js.map
+exports.AccountSettingsService = AccountSettingsService;
+//# sourceMappingURL=accountsettings.service.js.map
