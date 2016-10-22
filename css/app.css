@@ -33,7 +33,7 @@ pre {
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
-    background: #0C3C26;
+    background: none;
 }
 
 #no_hover:hover, #no_hover:focus{
@@ -41,7 +41,7 @@ pre {
 }
 
 span, label, a{
-    font-family: Special Elite !important;
+   font-variant: normal;font-family: 'Orbitron', sans-serif;
 }
 
 .ui-dialog {

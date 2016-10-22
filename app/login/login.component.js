@@ -32,9 +32,9 @@ var LoginComponent = (function (_super) {
     };
     LoginComponent = __decorate([
         core_1.Component({
-            moduleId: module.id,
             selector: 'app-login',
             templateUrl: 'login.component.html',
+            moduleId: module.id,
             styleUrls: ['login.component.css']
         }), 
         __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])

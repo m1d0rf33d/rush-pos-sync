@@ -13,6 +13,7 @@ var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
+var AppConfig_1 = require('../config/AppConfig');
 var AuthService = (function () {
     function AuthService(http, router) {
         this.http = http;
@@ -21,16 +22,26 @@ var AuthService = (function () {
     AuthService.prototype.authenticate = function (username, password, loginComponent) {
         var _this = this;
         loginComponent.standby();
+        var body = '';
         var headers = new http_1.Headers();
+        headers.append('Authorization', 'Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=');
         headers.append('Content-Type', 'application/json');
-        this.http.post('http://52.74.190.173:8080/rush-pos-sync/oauth/token?grant_type=password&username=' + username + '&password=' +
-            password + '&client_id=rush', {}).subscribe(function (data) {
+        var options = new http_1.RequestOptions({ headers: headers });
+        var url = AppConfig_1.AppConfig.RUSH_LOGIN_URL.replace(':username', username)
+            .replace(':password', password);
+        this.http.post(url, body, options)
+            .subscribe(function (data) {
             if (data.json().access_token) {
                 window.localStorage.setItem('auth_key', data.json().access_token);
                 _this.router.navigate(['index']);
             }
-            loginComponent.ready();
-        }, function (error) { loginComponent.ready(); alert('Invalid Credentials'); });
+            loginComponent.loading = false;
+        }, function (error) {
+            loginComponent.loading = false;
+            setTimeout(function () {
+                alert('Invalid credentials.');
+            }, 200);
+        });
     };
     AuthService = __decorate([
         core_1.Injectable(), 

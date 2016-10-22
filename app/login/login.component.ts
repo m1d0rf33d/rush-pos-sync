@@ -4,9 +4,9 @@ import {Router} from '@angular/router';
 import {LoadingPage} from '../spinner/loading_container';
 
 @Component ({
-    moduleId: module.id,
     selector: 'app-login',
     templateUrl: 'login.component.html',
+    moduleId: module.id,
     styleUrls: ['login.component.css']
 })
 
