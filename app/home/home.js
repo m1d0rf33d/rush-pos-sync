@@ -18,13 +18,14 @@ var angular2_datatable_1 = require('angular2-datatable');
 var merchant_component_1 = require('../home/merchants/merchant.component');
 var primeng_1 = require('primeng/primeng');
 var accountsettings_component_1 = require('../home/account_settings/accountsettings.component');
+var screenrestrictions_component_1 = require('../home/screen_restrictions/screenrestrictions.component');
 var HomeModule = (function () {
     function HomeModule() {
     }
     HomeModule = __decorate([
         core_1.NgModule({
             imports: [routes_1.routing, common_1.CommonModule, forms_1.FormsModule, angular2_datatable_1.DataTableModule, primeng_1.DialogModule],
-            declarations: [home_component_1.HomeComponent, merchant_component_1.MerchantComponent, accountsettings_component_1.AccountSettingsComponent],
+            declarations: [home_component_1.HomeComponent, merchant_component_1.MerchantComponent, accountsettings_component_1.AccountSettingsComponent, screenrestrictions_component_1.ScreenRestrictionsComponent],
             providers: [routes_1.appRoutingProviders]
         }), 
         __metadata('design:paramtypes', [])

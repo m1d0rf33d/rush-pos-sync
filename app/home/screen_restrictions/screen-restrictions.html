@@ -1,23 +1,28 @@
 <div>
+    
 <br/>
-<label><font size="6"> ACCOUNT SETTINGS</font></label> <br/><br/>
+<label><font size="6"> SCREEN RESTRICTIONS</font></label> <br/><br/>
+
+
 
 <div >
     <label><font size="3"> SEARCH BY MERCHANT:</font></label> &nbsp;
     <select [(ngModel)]="selectedMerchant" style="width: 200px;background-color: white;">
           <option [value]="merchant.id" *ngFor="let merchant of merchants">{{merchant.name}}</option>
     </select>&nbsp;&nbsp;
-    <a href="" (click)="searchMerchantAccounts($event)" style="width: 100px;text-align: center;display: inline-block;padding: 5px;background-color: #00baff;color: white;">SEARCH</a>
+    <a href="" (click)="getScreens($event)" style="width: 100px;text-align: center;display: inline-block;padding: 5px;background-color: #00baff;color: white;">SEARCH</a>
  </div>
 <hr style="border-color:black;" />
-<table style="table-layout:fixed;background-color: white;width: 800px;min-width: 800px;" class="table table-bordered" [mfData]="accounts" #mf="mfDataTable" [mfRowsOnPage]="5">
+
+
+<table style="table-layout:fixed;background-color: white;width: 800px;min-width: 800px;" class="table table-bordered" [mfData]="roleDTOs" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
     <tr>
         <th style="width: 35%">
-            Name
+            Role
         </th>
         <th style="width: 35%">
-            Role
+            Accessible screens
         </th>
         <th style="width: 30%;"></th>
     </tr>
@@ -25,7 +30,9 @@
     <tbody>
     <tr *ngFor="let item of mf.data">
         <td style="word-wrap:break-word;">{{item.name}}</td>
-        <td style="word-wrap:break-word;">{{item.role}}</td>
+        <td style="word-wrap:break-word;"><label *ngFor="let screen of item.screens">
+            <label *ngIf="screen.checked == true">{{screen.name}}</label>
+        </label> </td>
         <td style="word-wrap:break-word;">
        <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #F0B003;width: 100px;" href="" (click)="showDialog($event,item)">UPDATE</a>
         </td>
@@ -40,30 +47,27 @@
     </tfoot>
 </table>
 
-</div>
 
-
-<p-dialog width="550" [(visible)]="display" modal="modal" showEffect="fade">
-   <label><font size="4">UPDATE ACCOUNT</font></label>
+<p-dialog top="10" width="550" [(visible)]="display" modal="modal" showEffect="fade">
+     <label><font size="3">Role: {{selectedRole.name}}</font></label>
    <hr/>
-<div style="width: 500;">
-       <div style="margin-top: 5px;margin-left: 100px;float:left;">
-            <label style="display: inline-block;width:100px;" > Name: </label><br/><br/>
-            <label style="display: inline-block;width:100px;"> Role: </label><br/><br/>
-        </div>     
-    <div >
-        <input style="width:200px;"  type="text" [(ngModel)]="selectedAccount.name"/> <br/><br/>
-        <select style="width:200px;" [(ngModel)]="selectedAccount.role">
-            <option value="ADMIN">ADMIN</option>
-            <option value="CASHIER">CASHIER</option>
-        </select>
+<div style="width: 500;" style="margin-left: 150px;">
+    <div *ngFor="let screen of selectedRole.screens">
+       <div style="float:left;width: 200px;">{{screen.name}}</div>
+       <div><input [(ngModel)]="screen.checked" type="checkbox"/></div><br/>
     </div>
 </div>
 <br/><br/>
 <div class="row" style="width: 500;">
-   <div style="margin-left: 150px;">
+    <div class="col-sm-4">
+
+    </div>
+   <div class="col-sm-8">
      <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="update($event,selectedAccount)">SAVE</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="display=false" >CANCEL</a>
    </div>
 </div>
       <br/><br/>
 </p-dialog>
+
+
+</div>

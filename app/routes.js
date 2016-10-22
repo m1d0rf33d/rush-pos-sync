@@ -5,6 +5,7 @@ var home_component_1 = require('./home/home.component');
 var auth_manager_1 = require('./auth/auth.manager');
 var merchant_component_1 = require('./home/merchants/merchant.component');
 var accountsettings_component_1 = require('./home/account_settings/accountsettings.component');
+var screenrestrictions_component_1 = require('./home/screen_restrictions/screenrestrictions.component');
 var appRoutes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: 'index',
@@ -14,7 +15,8 @@ var appRoutes = [
         children: [
             { path: '', redirectTo: 'merchants', pathMatch: 'full' },
             { path: 'merchants', component: merchant_component_1.MerchantComponent },
-            { path: 'accountsettings', component: accountsettings_component_1.AccountSettingsComponent }
+            { path: 'accountsettings', component: accountsettings_component_1.AccountSettingsComponent },
+            { path: 'screenrestrictions', component: screenrestrictions_component_1.ScreenRestrictionsComponent }
         ] }];
 exports.appRoutingProviders = [];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);

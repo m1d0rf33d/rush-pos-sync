@@ -30,6 +30,20 @@ var AppConfig = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AppConfig, "GET_SCREENS", {
+        get: function () {
+            return 'http://localhost:8080/rush-pos-sync/api/merchant/:merchantId/screens';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppConfig, "UPDATE_ACCESS_URL", {
+        get: function () {
+            return 'http://localhost:8080/rush-pos-sync/api/merchant/access/update';
+        },
+        enumerable: true,
+        configurable: true
+    });
     return AppConfig;
 }());
 exports.AppConfig = AppConfig;

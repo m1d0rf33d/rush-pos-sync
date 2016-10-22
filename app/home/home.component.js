@@ -13,7 +13,22 @@ var auth_service_1 = require('../auth/auth.service');
 var router_1 = require('@angular/router');
 var HomeComponent = (function () {
     function HomeComponent(router) {
+        var _this = this;
         this.router = router;
+        this.step = '';
+        router.events.subscribe(function (val) {
+            // see also 
+            if (val.url == '/index/merchants' || val.url == '/index') {
+                _this.step = 'step1';
+            }
+            else if (val.url == '/index/accountsettings') {
+                _this.step = 'step2';
+            }
+            else {
+                console.log(val.url);
+                _this.step = 'step3';
+            }
+        });
     }
     HomeComponent.prototype.logout = function () {
         window.localStorage.removeItem('auth_key');

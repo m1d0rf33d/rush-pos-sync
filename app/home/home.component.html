@@ -20,7 +20,7 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper" style="margin-top: 49px;">
             <ul class="sidebar-nav">
-                <li class="side-nav-li">
+                <li class="side-nav-li" [class.active]="step=='step1'" (click)="step='step1'">
                      <div>
                 <div style="float: left;">
                 <i class="fa fa-building fa-2x" aria-hidden="true"></i>
@@ -32,7 +32,7 @@
                   </div>
                </div>
                 </li>
-               <li class="side-nav-li">
+               <li class="side-nav-li" [class.active]="step=='step2'" (click)="step='step2'">
                <div>
                 <div style="float: left;">
                 <i class="fa fa-users fa-2x" aria-hidden="true"></i>
@@ -44,13 +44,13 @@
                   </div>
                </div>
                 </li>
-                <li class="side-nav-li">
+                <li class="side-nav-li" [class.active]="step=='step3'" (click)="step='step3'">
                         <div>
                 <div style="float: left;">
                 <i class="fa fa-lock fa-2x" aria-hidden="true"></i>
                </div>
                   <div>
-                        <a [routerLink]="['merchants']">
+                        <a [routerLink]="['screenrestrictions']">
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Screen <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Restrictions
                     </a>
                   </div>

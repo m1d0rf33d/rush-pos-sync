@@ -12,8 +12,19 @@ import {Router} from '@angular/router';
 
 export class HomeComponent {
 
+    step = '';
     constructor (private router: Router) {
-      
+          router.events.subscribe((val) => {
+        // see also 
+        if (val.url == '/index/merchants' || val.url == '/index') {
+              this.step = 'step1';
+        } else if (val.url == '/index/accountsettings') {
+             this.step = 'step2';
+        } else {
+            console.log(val.url);
+             this.step = 'step3';
+        }
+    });
     }
 
     logout () {

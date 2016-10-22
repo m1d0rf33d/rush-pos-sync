@@ -47,4 +47,9 @@ span, label, a, th {
 .ui-dialog {
     background-color: white !important;
     overflow: none;
+    top: 50 !important;
+}
+
+.active {
+    background-color: #A4A4A4;
 }

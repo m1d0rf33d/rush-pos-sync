@@ -19,6 +19,7 @@ export class MerchantComponent {
         customerApiKey: '',
         customerApiSecret: ''
     }
+    
 
     constructor(private merchantService:MerchantService) {
         this.merchants = [];

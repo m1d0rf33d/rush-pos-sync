@@ -11,4 +11,10 @@ export class AppConfig {
     public static get UPDATE_ACCOUNT_URL(): string {
         return  'http://localhost:8080/rush-pos-sync/api/merchant/accounts/update';
     }
+    public static get GET_SCREENS(): string {
+        return  'http://localhost:8080/rush-pos-sync/api/merchant/:merchantId/screens';
+    }
+    public static get UPDATE_ACCESS_URL(): string {
+        return  'http://localhost:8080/rush-pos-sync/api/merchant/access/update';
+    }
 }
