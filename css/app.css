@@ -40,7 +40,7 @@ pre {
     background: #e98300;
 }
 
-span, label, a{
+span, label, a, th {
    font-variant: normal;font-family: 'Orbitron', sans-serif;
 }
 

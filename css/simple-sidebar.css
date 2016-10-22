@@ -68,7 +68,7 @@
 }
 
 .sidebar-nav li {
-    line-height: 40px;
+    line-height: 20px;
     padding: 10px;
     border-bottom: .5px solid #585858;
 }
@@ -76,7 +76,7 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    font: normal 15px "Open Sans", sans-serif;
+    font-variant: normal;font-family: 'Orbitron', sans-serif;
     color: white;
     padding: 0px;
 }

@@ -9,6 +9,13 @@ var AppConfig = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AppConfig, "GET_MERCHANTS_URL", {
+        get: function () {
+            return 'http://localhost:8080/rush-pos-sync/merchant/';
+        },
+        enumerable: true,
+        configurable: true
+    });
     return AppConfig;
 }());
 exports.AppConfig = AppConfig;
