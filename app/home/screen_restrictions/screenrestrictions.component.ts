@@ -15,6 +15,9 @@ export class ScreenRestrictionsComponent {
     roleDTOs: any[];
     selectedMerchant: any;
 
+    messageType = '';
+    message = '';
+    showCustomAlert = false;
     constructor(private merchantService: MerchantService, private screenRestrictionsService:ScreenRestrictionsService) {
         this.merchants = [];
         this.roleDTOs = []; 
@@ -26,8 +29,19 @@ export class ScreenRestrictionsComponent {
     getScreens(event) {
         event.preventDefault();
         this.screenRestrictionsService.getScreens(this.selectedMerchant).subscribe(data => {
-            this.roleDTOs = data.data.roleDTOs;  
-            this.screens = data.data.screens; 
+            if (data.responseCode == '200') {
+                 this.messageType = 'HOORAY!';
+                 this.message = 'Total search results: ' + data.data.roleDTOs.length;
+                 this.showCustomAlert = true;
+
+                 this.roleDTOs = data.data.roleDTOs;  
+                 this.screens = data.data.screens; 
+            } else {
+                 this.messageType = 'OOPS!';
+                 this.message = 'Something unexpected happened please contact developer :)';
+                 this.showCustomAlert = false;
+            }
+          
         });
     }
 
@@ -62,7 +76,9 @@ export class ScreenRestrictionsComponent {
     update(event) {
        event.preventDefault();
        this.screenRestrictionsService.updateAccess(this.selectedRole).subscribe(data => {
-            alert('Update successful');
+            this.messageType = 'HOORAY!';
+            this.message = 'Screen restrictions has been updated.';
+            this.showCustomAlert = true;
             this.display =  false;
             this.screenRestrictionsService.getScreens(this.selectedMerchant).subscribe(data => {
             this.roleDTOs = data.data.roleDTOs;  
@@ -70,7 +86,9 @@ export class ScreenRestrictionsComponent {
         });
         },
         error => {
-            alert('Update failed.');
+            this.messageType = 'OOPS!';
+            this.message = 'Something unexpected happened please contact developer :)';
+            this.showCustomAlert = true;
         });
     }
 

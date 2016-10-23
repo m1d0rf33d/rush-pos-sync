@@ -21,6 +21,9 @@ var MerchantComponent = (function () {
             customerApiKey: '',
             customerApiSecret: ''
         };
+        this.messageType = '';
+        this.message = '';
+        this.showCustomAlert = false;
         this.display = false;
         this.selectedMerchant = {
             name: '',
@@ -37,29 +40,36 @@ var MerchantComponent = (function () {
             console.log(_this.merchants);
         });
     }
-    MerchantComponent.prototype.update = function (event, merchant) {
+    MerchantComponent.prototype.update = function (event) {
         var _this = this;
         event.preventDefault();
         //validate fields
-        if (merchant.name === '' ||
-            merchant.merchantApiKey === '' ||
-            merchant.merchantApiSecret === '' ||
-            merchant.customerApiKey === '' ||
-            merchant.customerApiSecret === '') {
-            alert('All fields are required.');
+        if (this.selectedMerchant.name === '' ||
+            this.selectedMerchant.merchantApiKey === '' ||
+            this.selectedMerchant.merchantApiSecret === '' ||
+            this.selectedMerchant.customerApiKey === '' ||
+            this.selectedMerchant.customerApiSecret === '') {
+            this.messageType = 'OOPS!';
+            this.message = 'All fields are required!';
+            this.showCustomAlert = true;
             return;
         }
-        this.merchantService.create(merchant)
+        console.log(this.selectedMerchant);
+        this.merchantService.create(this.selectedMerchant)
             .subscribe(function (data) {
             console.log(data);
             if (data.responseCode === '200') {
                 _this.clearMerchant();
-                alert('Merchant updated.');
                 _this.merchantService.getMerchants().subscribe(function (data) { return _this.merchants = data.data; });
                 _this.display = false;
+                _this.messageType = 'HOORAY!';
+                _this.message = 'Merchant details has been updated.';
+                _this.showCustomAlert = true;
             }
             else {
-                alert('Merchant create failed. Please contact system administrator.');
+                _this.messageType = 'OOPS!';
+                _this.message = 'Something unexpected went wrong please contact the developer :)';
+                _this.showCustomAlert = true;
             }
         });
     };
@@ -72,7 +82,9 @@ var MerchantComponent = (function () {
             this.merchant.merchantApiSecret === '' ||
             this.merchant.customerApiKey === '' ||
             this.merchant.customerApiSecret === '') {
-            alert('All fields are required.');
+            this.messageType = 'OOPS!';
+            this.message = 'All fields are required!';
+            this.showCustomAlert = true;
             return;
         }
         this.merchantService.create(this.merchant)
@@ -80,11 +92,15 @@ var MerchantComponent = (function () {
             console.log(data);
             if (data.responseCode === '200') {
                 _this.clearMerchant();
-                alert('Merchant created.');
                 _this.merchantService.getMerchants().subscribe(function (data) { return _this.merchants = data.data; });
+                _this.messageType = 'HOORAY!';
+                _this.message = 'Merchant has been created.';
+                _this.showCustomAlert = true;
             }
             else {
-                alert('Merchant create failed. Please contact system administrator.');
+                _this.messageType = 'OOPS!';
+                _this.message = 'Something unexpected went wrong please contact the developer :)';
+                _this.showCustomAlert = true;
             }
         });
     };

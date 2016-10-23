@@ -24,9 +24,11 @@ var HomeComponent = (function () {
             else if (val.url == '/index/accountsettings') {
                 _this.step = 'step2';
             }
-            else {
-                console.log(val.url);
+            else if (val.url == '/index/screenrestrictions') {
                 _this.step = 'step3';
+            }
+            else {
+                _this.step = 'step4';
             }
         });
     }

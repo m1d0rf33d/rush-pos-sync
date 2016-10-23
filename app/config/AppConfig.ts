@@ -17,4 +17,13 @@ export class AppConfig {
     public static get UPDATE_ACCESS_URL(): string {
         return  'http://localhost:8080/rush-pos-sync/api/merchant/access/update';
     }
+    public static get GET_ROLES_URL(): string {
+        return  'http://localhost:8080/rush-pos-sync/api/merchant/:merchantId/roles';
+    }
+    public static get UPDATE_ROLES_URL(): string {
+        return  'http://localhost:8080/rush-pos-sync/api/merchant/roles/update';
+    }
+      public static get DELETE_ROLES_URL(): string {
+        return  'http://localhost:8080/rush-pos-sync/api/merchant/roles/delete';
+    }
 }

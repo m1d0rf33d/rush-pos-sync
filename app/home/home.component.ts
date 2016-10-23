@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 
 export class HomeComponent {
-
+  
     step = '';
     constructor (private router: Router) {
           router.events.subscribe((val) => {
@@ -20,9 +20,12 @@ export class HomeComponent {
               this.step = 'step1';
         } else if (val.url == '/index/accountsettings') {
              this.step = 'step2';
-        } else {
-            console.log(val.url);
+        } else if (val.url == '/index/screenrestrictions') {
+        
              this.step = 'step3';
+        } else {
+
+             this.step = 'step4';
         }
     });
     }

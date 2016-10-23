@@ -16,6 +16,9 @@ var ScreenRestrictionsComponent = (function () {
         var _this = this;
         this.merchantService = merchantService;
         this.screenRestrictionsService = screenRestrictionsService;
+        this.messageType = '';
+        this.message = '';
+        this.showCustomAlert = false;
         this.display = false;
         this.selectedRole = {
             name: '',
@@ -32,8 +35,18 @@ var ScreenRestrictionsComponent = (function () {
         var _this = this;
         event.preventDefault();
         this.screenRestrictionsService.getScreens(this.selectedMerchant).subscribe(function (data) {
-            _this.roleDTOs = data.data.roleDTOs;
-            _this.screens = data.data.screens;
+            if (data.responseCode == '200') {
+                _this.messageType = 'HOORAY!';
+                _this.message = 'Total search results: ' + data.data.roleDTOs.length;
+                _this.showCustomAlert = true;
+                _this.roleDTOs = data.data.roleDTOs;
+                _this.screens = data.data.screens;
+            }
+            else {
+                _this.messageType = 'OOPS!';
+                _this.message = 'Something unexpected happened please contact developer :)';
+                _this.showCustomAlert = false;
+            }
         });
     };
     ScreenRestrictionsComponent.prototype.showDialog = function (event, account) {
@@ -58,14 +71,18 @@ var ScreenRestrictionsComponent = (function () {
         var _this = this;
         event.preventDefault();
         this.screenRestrictionsService.updateAccess(this.selectedRole).subscribe(function (data) {
-            alert('Update successful');
+            _this.messageType = 'HOORAY!';
+            _this.message = 'Screen restrictions has been updated.';
+            _this.showCustomAlert = true;
             _this.display = false;
             _this.screenRestrictionsService.getScreens(_this.selectedMerchant).subscribe(function (data) {
                 _this.roleDTOs = data.data.roleDTOs;
                 _this.screens = data.data.screens;
             });
         }, function (error) {
-            alert('Update failed.');
+            _this.messageType = 'OOPS!';
+            _this.message = 'Something unexpected happened please contact developer :)';
+            _this.showCustomAlert = true;
         });
     };
     ScreenRestrictionsComponent = __decorate([

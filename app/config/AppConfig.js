@@ -44,6 +44,27 @@ var AppConfig = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AppConfig, "GET_ROLES_URL", {
+        get: function () {
+            return 'http://localhost:8080/rush-pos-sync/api/merchant/:merchantId/roles';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppConfig, "UPDATE_ROLES_URL", {
+        get: function () {
+            return 'http://localhost:8080/rush-pos-sync/api/merchant/roles/update';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppConfig, "DELETE_ROLES_URL", {
+        get: function () {
+            return 'http://localhost:8080/rush-pos-sync/api/merchant/roles/delete';
+        },
+        enumerable: true,
+        configurable: true
+    });
     return AppConfig;
 }());
 exports.AppConfig = AppConfig;

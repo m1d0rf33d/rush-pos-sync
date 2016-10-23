@@ -56,6 +56,20 @@
                   </div>
                </div>
                 </li>
+
+                <li class="side-nav-li" [class.active]="step=='step4'" (click)="step='step4'">
+                <div>
+                   <div style="float: left;">
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+               </div>
+                    <div>
+                        <a [routerLink]="['rolesettings']">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Role <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings
+                        </a>
+                    </div>
+                  
+               </div>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -72,3 +86,5 @@
 
 
 </div>
+
+

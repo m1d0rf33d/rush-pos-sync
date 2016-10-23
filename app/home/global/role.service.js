@@ -13,36 +13,35 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var AppConfig_1 = require('../../config/AppConfig');
-var MerchantService = (function () {
-    function MerchantService(http) {
+var RoleService = (function () {
+    function RoleService(http) {
         this.http = http;
     }
-    MerchantService.prototype.getMerchants = function () {
+    RoleService.prototype.getRoles = function (merchantId) {
         var headers = new http_1.Headers();
         headers.append('Content-type', 'application/json');
         headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
-        return this.http.get(AppConfig_1.AppConfig.GET_MERCHANTS_URL, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.get(AppConfig_1.AppConfig.GET_ROLES_URL.replace(':merchantId', merchantId), { headers: headers }).map(function (res) { return res.json(); });
     };
-    MerchantService.prototype.create = function (merchant) {
-        var body = JSON.stringify(merchant);
+    RoleService.prototype.updateRole = function (roleDTO) {
+        var body = JSON.stringify(roleDTO);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(AppConfig_1.AppConfig.GET_MERCHANTS_URL, body, options).map(function (res) { return res.json(); });
+        return this.http.post(AppConfig_1.AppConfig.UPDATE_ROLES_URL, body, options).map(function (res) { return res.json(); });
     };
-    MerchantService.prototype.update = function (merchant) {
-        event.preventDefault();
-        var body = JSON.stringify(merchant);
+    RoleService.prototype.deleteRole = function (roleDTO) {
+        var body = JSON.stringify(roleDTO);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('auth_key'));
         var options = new http_1.RequestOptions({ headers: headers });
-        console.log(body);
-        return this.http.post(AppConfig_1.AppConfig.GET_MERCHANTS_URL, body, options).map(function (res) { return res.json(); });
+        return this.http.post(AppConfig_1.AppConfig.DELETE_ROLES_URL, body, options).map(function (res) { return res.json(); });
     };
-    MerchantService = __decorate([
+    RoleService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], MerchantService);
-    return MerchantService;
+    ], RoleService);
+    return RoleService;
 }());
-exports.MerchantService = MerchantService;
-//# sourceMappingURL=merchant.service.js.map
+exports.RoleService = RoleService;
+//# sourceMappingURL=role.service.js.map

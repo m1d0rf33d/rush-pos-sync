@@ -20,7 +20,9 @@ export class MerchantComponent {
         customerApiSecret: ''
     }
     
-
+    messageType = '';
+    message = '';
+    showCustomAlert = false;
     constructor(private merchantService:MerchantService) {
         this.merchants = [];
         this.merchantService.getMerchants().subscribe(data =>{
@@ -30,27 +32,36 @@ export class MerchantComponent {
          
     }
 
-    update(event, merchant) {
+    update(event) {
         event.preventDefault();
         //validate fields
-        if (merchant.name === '' || 
-            merchant.merchantApiKey === '' ||
-            merchant.merchantApiSecret === '' ||
-            merchant.customerApiKey === '' ||
-            merchant.customerApiSecret === '') {
-            alert('All fields are required.');
+        if (this.selectedMerchant.name === '' || 
+            this.selectedMerchant.merchantApiKey === '' ||
+            this.selectedMerchant.merchantApiSecret === '' ||
+            this.selectedMerchant.customerApiKey === '' ||
+            this.selectedMerchant.customerApiSecret === '') {
+            this.messageType = 'OOPS!';
+            this.message = 'All fields are required!';
+            this.showCustomAlert = true;
             return;
         }
-       this.merchantService.create(merchant)
+        console.log(this.selectedMerchant);
+       this.merchantService.create(this.selectedMerchant)
        .subscribe(data => {
                console.log(data);
               if (data.responseCode === '200') {
                   this.clearMerchant();
-                  alert('Merchant updated.');
                   this.merchantService.getMerchants().subscribe(data => this.merchants = data.data);
                   this.display = false;
+
+                  this.messageType = 'HOORAY!';
+                  this.message = 'Merchant details has been updated.';
+                  this.showCustomAlert = true; 
+
               } else {
-                  alert('Merchant create failed. Please contact system administrator.');
+                  this.messageType = 'OOPS!';
+                  this.message = 'Something unexpected went wrong please contact the developer :)';
+                  this.showCustomAlert = true; 
               }
        });
     }        
@@ -63,7 +74,10 @@ export class MerchantComponent {
             this.merchant.merchantApiSecret === '' ||
             this.merchant.customerApiKey === '' ||
             this.merchant.customerApiSecret === '') {
-            alert('All fields are required.');
+            
+            this.messageType = 'OOPS!';
+            this.message = 'All fields are required!';
+            this.showCustomAlert = true;
             return;
         }
        this.merchantService.create(this.merchant)
@@ -71,10 +85,16 @@ export class MerchantComponent {
                console.log(data);
               if (data.responseCode === '200') {
                   this.clearMerchant();
-                  alert('Merchant created.');
+        
                   this.merchantService.getMerchants().subscribe(data => this.merchants = data.data);
+                  this.messageType = 'HOORAY!';
+                  this.message = 'Merchant has been created.';
+                  this.showCustomAlert = true; 
+
               } else {
-                  alert('Merchant create failed. Please contact system administrator.');
+                  this.messageType = 'OOPS!';
+                  this.message = 'Something unexpected went wrong please contact the developer :)';
+                  this.showCustomAlert = true; 
               }
        });
     }
