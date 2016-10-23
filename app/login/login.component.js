@@ -52,7 +52,7 @@ var LoginComponent = (function (_super) {
             selector: 'app-login',
             templateUrl: '/rush-pos-sync/login.component.html',
             moduleId: module.id,
-            styleUrls: ['login.component.css']
+            styleUrls: ['/rush-pos-sync/login.component.css']
         }), 
         __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
     ], LoginComponent);
