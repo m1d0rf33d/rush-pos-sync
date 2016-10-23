@@ -4,7 +4,8 @@ var gulp  = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     sysBuilder = require('systemjs-builder'),
-    concatCss = require('gulp-concat-css');
+    concatCss = require('gulp-concat-css'),
+    cleanCSS = require('gulp-clean-css');
 
 // create a default task and just log a message
 gulp.task('default', function() {
@@ -33,8 +34,14 @@ gulp.task('bundle:css', function () {
         'css/simple-sidebar.css',
         'node_modules/primeng/resources/primeng.min.css',
         'css/app.css'      ])
-        .pipe(concatCss('app.min.css'))
+        .pipe(concatCss('app.css'))
         .pipe(gulp.dest('public/lib/css'));
+});
+
+gulp.task('minify-css', function() {
+  return gulp.src('public/lib/css/app.css')
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('public/lib/css/dist'));
 });
 
 // Generate systemjs-based builds
