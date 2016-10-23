@@ -50,7 +50,7 @@ var LoginComponent = (function (_super) {
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'app-login',
-            templateUrl: 'login.component.html',
+            templateUrl: '/rush-pos-sync/login.component.html',
             moduleId: module.id,
             styleUrls: ['login.component.css']
         }), 

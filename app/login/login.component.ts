@@ -5,7 +5,7 @@ import {LoadingPage} from '../spinner/loading_container';
 
 @Component ({
     selector: 'app-login',
-    templateUrl: 'login.component.html',
+    templateUrl: '/rush-pos-sync/login.component.html',
     moduleId: module.id,
     styleUrls: ['login.component.css']
 })
