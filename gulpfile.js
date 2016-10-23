@@ -31,12 +31,6 @@ gulp.task('bundle:js', function() {
   return builder.buildStatic('app', 'public/dist/js/app.min.js');
 });
 
-// Generate systemjs-based builds
-gulp.task('bundle:js', function() {
-  var builder = new sysBuilder('', 'systemjs.config.js');
-  return builder.buildStatic('app', 'public/dist/js/app.min.js');
-});
-
 // Minify JS bundle
 gulp.task('minify:js', function() {
   return gulp

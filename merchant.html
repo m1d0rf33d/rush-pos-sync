@@ -1,56 +1,58 @@
-<div>
-
-<label><font size=6>Merchant Management</font></label>
-<hr />
-<div class=row>
-<div class="col-sm-2" style="margin-top: 5px;">
+<div style="min-width:1000px;width: 1000px;"> 
+<br/>
+<label><font size=6>MERCHANT SETTINGS</font></label><br/><br/>
+<label><font size=3>CREATE MERCHANT</font></label>
+<hr style="border-color:black;" />
+<div >
+<div style="width: 200px;float:left;">
     <label> Name: </label><br/><br/>
     <label> Merchant API Key: </label><br/><br/>
     <label> Merchant API Secret: </label><br/><br/>
     <label> Customer API Key: </label><br/><br/>
     <label> Customer API Secret: </label>
 </div>
-<div class="col-sm-4">
-    <input type="text" [(ngModel)]="merchant.name"/> <br/><br/>
-<input type="text" [(ngModel)]="merchant.merchantApiKey"/> <br/><br/>
-<input type="text" [(ngModel)]="merchant.merchantApiSecret"/> <br/><br/>
-<input type="text" [(ngModel)]="merchant.customerApiKey"/> <br/><br/>
-<input type="text" [(ngModel)]="merchant.customerApiSecret"/> <br/>
+<div>
+    <input style="width: 300px;" type="text" [(ngModel)]="merchant.name"/> <br/><br/>
+<input style="width: 300px;" type="text" [(ngModel)]="merchant.merchantApiKey"/> <br/><br/>
+<input style="width: 300px;" type="text" [(ngModel)]="merchant.merchantApiSecret"/> <br/><br/>
+<input style="width: 300px;" type="text" [(ngModel)]="merchant.customerApiKey"/> <br/><br/>
+<input style="width: 300px;" type="text" [(ngModel)]="merchant.customerApiSecret"/> <br/>
 </div>
 </div>
-<div class="row">
-<div class="col-sm-4" style="text-align:center;">
+<div style="text-align:center;width:500px;">
 <br/>
-    <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 80px;" href="" (click)="create($event)">ADD</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 80px;" href="" (click)="clear($event)">CLEAR</a>
+    <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 100px;" href="" (click)="create($event)">ADD</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 100px;" href="" (click)="clear($event)">CLEAR</a>
 </div>
-</div>
+
 
 
 
 <br/><br/><br/>
-<table style="table-layout:fixed;" class="table table-striped" [mfData]="merchants" #mf="mfDataTable" [mfRowsOnPage]="5">
+<label><font size=3>EXISTING MERCHANTS</font></label>
+<hr style="border-color:black;" />
+<table style="table-layout:fixed;background-color: white;" class="table table-bordered" [mfData]="merchants" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
     <tr>
         <th style="width: 10%">
-            <mfDefaultSorter by="name">Name</mfDefaultSorter>
+            Name
         </th>
         <th style="width: 10%">
-            <mfDefaultSorter by="email">API Key</mfDefaultSorter>
+           API Key
         </th>
         <th style="width: 10%">
-            <mfDefaultSorter by="age">API Secret</mfDefaultSorter>
+           API Secret 
         </th>
-       <th style="width: 13%">
-            <mfDefaultSorter by="email">Customer API Key</mfDefaultSorter>
+       <th style="width: 10%">
+            Customer API Key 
         </th>
-        <th style="width: 13%">
-            <mfDefaultSorter by="age">Customer API Secret</mfDefaultSorter>
-        </th>
-        <th style="width: 10%">
-            <mfDefaultSorter by="age">Status</mfDefaultSorter>
+        <th style="width: 10%;word-wrap:break-word;">
+           Customer API Secret
         </th>
         <th style="width: 10%">
-            <mfDefaultSorter by="age"></mfDefaultSorter>
+           Status 
+        </th>
+        <th style="width: 10%">
+           
         </th>
     </tr>
     </thead>
@@ -63,8 +65,8 @@
         <td style="word-wrap:break-word;">{{item.customerApiSecret}}</td>
         <td style="word-wrap:break-word;"> {{item.status}}</td>
         <td style="word-wrap:break-word;">
-       <button style="background-color: #e98300;padding:5px;" type="text" (click)="showDialog(item)" pButton icon="fa-external-link-square" label="Show"><font size="3" color="white"><b>UPDATE</b></font></button>
-        
+       <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #F0B003;width: 100px;" href="" (click)="showDialog($event,item)">UPDATE</a>
+        </td>
     </tr>
     </tbody>
     <tfoot>
@@ -80,36 +82,46 @@
    <label><font size="4">UPDATE MERCHANT DETAILS</font></label>
    <hr/>
 <div class="row" style="width: 500;">
-       <div class="col-sm-6" style="margin-top: 5px;">
-            <label> Name: </label><br/><br/>
-            <label> Merchant API Key: </label><br/><br/>
-            <label> Merchant API Secret: </label><br/><br/>
-            <label> Customer API Key: </label><br/><br/>
-            <label> Customer API Secret: </label><br/><br/>
-            <label> Status:</label>
+       <div  style="margin-top: 5px;float: left;margin-left: 50px;">
+            <label style="display:inline-block;width: 200px;"> Name: </label><br/><br/>
+            <label style="display:inline-block;width: 200px;"> Merchant API Key: </label><br/><br/>
+            <label style="display:inline-block;width: 200px;"> Merchant API Secret: </label><br/><br/>
+            <label style="display:inline-block;width: 200px;"> Customer API Key: </label><br/><br/>
+            <label style="display:inline-block;width: 200px;"> Customer API Secret: </label><br/><br/>
+            <label style="display:inline-block;width: 200px;"> Status:</label>
         </div>     
-    <div class="col-sm-6">
-        <input type="text" [(ngModel)]="selectedMerchant.name"/> <br/><br/>
-        <input type="text" [(ngModel)]="selectedMerchant.merchantApiKey"/> <br/><br/>
-        <input type="text" [(ngModel)]="selectedMerchant.merchantApiSecret"/> <br/><br/>
-        <input type="text" [(ngModel)]="selectedMerchant.customerApiKey"/> <br/><br/>
-        <input type="text" [(ngModel)]="selectedMerchant.customerApiSecret"/> <br/><br/>
-        <select [(ngModel)]="selectedMerchant.status">
+    <div>
+        <input style="width: 200px;" type="text" [(ngModel)]="selectedMerchant.name"/> <br/><br/>
+        <input style="width: 200px;" type="text" [(ngModel)]="selectedMerchant.merchantApiKey"/> <br/><br/>
+        <input style="width: 200px;"  type="text" [(ngModel)]="selectedMerchant.merchantApiSecret"/> <br/><br/>
+        <input style="width: 200px;" type="text" [(ngModel)]="selectedMerchant.customerApiKey"/> <br/><br/>
+        <input style="width: 200px;" type="text" [(ngModel)]="selectedMerchant.customerApiSecret"/> <br/><br/>
+        <select style="width: 200px;" [(ngModel)]="selectedMerchant.status">
             <option value="ACTIVE">ACTIVE</option>
             <option value="INACTIVE">INACTIVE</option>
         </select>
     </div>
 </div>
 <br/><br/>
-<div class="row" style="width: 500;">
-    <div class="col-sm-4">
-
-    </div>
-   <div class="col-sm-8">
-     <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="update($event,selectedMerchant)">SAVE</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="display=false" >CANCEL</a>
+<div  style="width: 500;">
+   <div style="margin-left: 150px;">
+     <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="update($event)">SAVE</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="display=false" >CANCEL</a>
    </div>
 </div>
       <br/><br/>
 </p-dialog>
 
 </div>
+
+
+<p-dialog  width="480" [(visible)]="showCustomAlert" modal="modal" showEffect="fade">
+     <label><font size="3">{{messageType}}</font></label>
+   <hr/>
+<div style="width: 400;margin-left: 50px;" >
+  
+    <label style="display: inline-block; width:400px;"><font size="3">{{message}}</font></label>
+</div>
+<br><br>
+   <a style="margin-left: 150px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 150px;" href="" (click)="showCustomAlert = false">OKAY</a>
+   <br><br>
+</p-dialog>

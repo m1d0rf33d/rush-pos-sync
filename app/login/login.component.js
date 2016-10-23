@@ -25,10 +25,27 @@ var LoginComponent = (function (_super) {
         this.router = router;
         this.invalidCredentials = false;
         this.msgs = [];
+        this.messageType = '';
+        this.message = '';
+        this.showCustomAlert = false;
     }
     LoginComponent.prototype.login = function (event, username, password) {
+        var _this = this;
         event.preventDefault();
-        this.authService.authenticate(username, password, this);
+        this.standby();
+        this.authService.authenticate(username, password)
+            .subscribe(function (data) {
+            if (data.access_token) {
+                window.localStorage.setItem('auth_key', data.access_token);
+                _this.router.navigate(['index']);
+            }
+            _this.loading = false;
+        }, function (error) {
+            _this.loading = false;
+            _this.messageType = 'OOPS!';
+            _this.message = 'Invalid credentials';
+            _this.showCustomAlert = true;
+        });
     };
     LoginComponent = __decorate([
         core_1.Component({

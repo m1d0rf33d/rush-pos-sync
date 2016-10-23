@@ -1,0 +1,111 @@
+<div>
+<br/>
+<label><font size="6"> ROLE SETTINGS</font></label> <br/><br/>
+
+
+<div>
+    <label><font size="3"> CREATE NEW ROLE</font></label> <br/>
+    <hr style="border-color:black;" />
+    <div style="float: left;">
+        <label style="dispay:inline-block;width: 100px;">Merchant:</label><br/>
+        <label style="dispay:inline-block;width: 100px;padding-top: 20px;">Role name:</label>
+    </div>
+    <div>
+         <select [(ngModel)]="roleDTO.merchantId" style="width: 200px;background-color: white;">
+          <option [value]="merchant.id" *ngFor="let merchant of merchants">{{merchant.name}}</option>
+    </select><br><br>
+        <input style="width: 200px;" type="text" [(ngModel)]="roleDTO.name"/>
+    </div>
+</div>
+
+<div style="width:500px;">
+<br/>
+    <a style="margin-left:50px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 100px;" href="" (click)="create($event)">ADD</a><a style="margin-left:20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #00baff;width: 100px;" href="" (click)="clear($event)">CLEAR</a>
+</div>
+
+
+<br/><br/><br/>
+<div >
+    <label><font size="3"> EXISTING ROLES</font></label> <br/>
+    <hr style="border-color:black;" />
+    <label><font size="3"> SEARCH BY MERCHANT:</font></label> &nbsp;
+    <select [(ngModel)]="selectedMerchant" style="width: 200px;background-color: white;">
+          <option [value]="merchant.id" *ngFor="let merchant of merchants">{{merchant.name}}</option>
+    </select>&nbsp;&nbsp;
+    <a href="" (click)="getRoles($event)" style="width: 100px;text-align: center;display: inline-block;padding: 5px;background-color: #00baff;color: white;">SEARCH</a>
+    <br><br>
+    <table style="table-layout:fixed;background-color: white;width:450px;" class="table table-bordered" [mfData]="roles" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th style="width: 150px;">
+            Name
+        </th>
+        <th style="width: 300px;">
+           
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td>{{item.name}}</td>
+        <td style="word-wrap:break-word;">
+        <div style="float:left;">
+          <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #F0B003;width: 120px;" href="" (click)="showDialog($event,item)">UPDATE</a>
+        </div>
+        <div>
+            <a style="margin-left:20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #F71313;width: 120px;" href="" (click)="showDeleteAlert($event,item)">DELETE</a>
+        </div>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+ </div>
+</div>
+
+
+<p-dialog  width="480" [(visible)]="display" modal="modal" showEffect="fade">
+     <label><font size="3">UPDATE ROLE</font></label>
+   <hr/>
+<div style="width: 300;margin-left: 50px;" >
+   <div style="float:left;">
+    <label style="display: inline-block; width:100px;"><font size="3">Name:</font></label>
+   </div>
+   <div>
+   <input style="width: 200px;" type="text" [(ngModel)]="selectedRole.name"/>
+   </div>
+</div>
+<br><br>
+   <a style="margin-left: 100px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="update($event)">SAVE</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="display=false" >CANCEL</a>
+   <br><br>
+</p-dialog>
+
+<p-dialog  width="480" [(visible)]="deleteAlert" modal="modal" showEffect="fade">
+     <label><font size="3">Warning!</font></label>
+   <hr/>
+<div style="width: 400;margin-left: 50px;" >
+  
+    <label style="display: inline-block; width:300px;"><font size="3">Are you sure you want to delete {{selectedRole.name}}?</font></label>
+</div>
+<br><br>
+   <a style="margin-left: 100px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="delete($event)">YES</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="deleteAlert=false" >NO</a>
+   <br><br>
+</p-dialog>
+
+<p-dialog  width="480" [(visible)]="showCustomAlert" modal="modal" showEffect="fade">
+     <label><font size="3">{{messageType}}</font></label>
+   <hr/>
+<div style="width: 400;margin-left: 50px;" >
+  
+    <label style="display: inline-block; width:400px;"><font size="3">{{message}}</font></label>
+</div>
+<br><br>
+   <a style="margin-left: 150px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 150px;" href="" (click)="showCustomAlert = false">OKAY</a>
+   <br><br>
+</p-dialog>

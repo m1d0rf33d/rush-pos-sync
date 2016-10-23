@@ -1,0 +1,85 @@
+<div>
+    
+<br/>
+<label><font size="6"> SCREEN RESTRICTIONS</font></label> <br/><br/>
+
+
+
+<div >
+    <label><font size="3"> SEARCH BY MERCHANT:</font></label> &nbsp;
+    <select [(ngModel)]="selectedMerchant" style="width: 200px;background-color: white;">
+          <option [value]="merchant.id" *ngFor="let merchant of merchants">{{merchant.name}}</option>
+    </select>&nbsp;&nbsp;
+    <a href="" (click)="getScreens($event)" style="width: 100px;text-align: center;display: inline-block;padding: 5px;background-color: #00baff;color: white;">SEARCH</a>
+ </div>
+<hr style="border-color:black;" />
+
+
+<table style="table-layout:fixed;background-color: white;width: 800px;min-width: 800px;" class="table table-bordered" [mfData]="roleDTOs" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th style="width: 35%">
+            Role
+        </th>
+        <th style="width: 35%">
+            Accessible screens
+        </th>
+        <th style="width: 30%;"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of mf.data">
+        <td style="word-wrap:break-word;">{{item.name}}</td>
+        <td style="word-wrap:break-word;"><label *ngFor="let screen of item.screens">
+            <label *ngIf="screen.checked == true">{{screen.name}}</label>
+        </label> </td>
+        <td style="word-wrap:break-word;">
+       <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #F0B003;width: 100px;" href="" (click)="showDialog($event,item)">UPDATE</a>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+
+
+<p-dialog top="10" width="550" [(visible)]="display" modal="modal" showEffect="fade">
+     <label><font size="3">Role: {{selectedRole.name}}</font></label>
+   <hr/>
+<div style="width: 500;" style="margin-left: 150px;">
+    <div *ngFor="let screen of selectedRole.screens">
+       <div style="float:left;width: 200px;">{{screen.name}}</div>
+       <div><input [(ngModel)]="screen.checked" type="checkbox"/></div><br/>
+    </div>
+</div>
+<br/><br/>
+<div class="row" style="width: 500;">
+    <div class="col-sm-4">
+
+    </div>
+   <div class="col-sm-8">
+     <a style="color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="update($event,selectedAccount)">SAVE</a><a style="margin-left: 20px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 100px;" href="" (click)="display=false" >CANCEL</a>
+   </div>
+</div>
+      <br/><br/>
+</p-dialog>
+
+
+</div>
+
+<p-dialog  width="480" [(visible)]="showCustomAlert" modal="modal" showEffect="fade">
+     <label><font size="3">{{messageType}}</font></label>
+   <hr/>
+<div style="width: 400;margin-left: 50px;" >
+  
+    <label style="display: inline-block; width:400px;"><font size="3">{{message}}</font></label>
+</div>
+<br><br>
+   <a style="margin-left: 150px;color: white !important;text-align: center;display: inline-block;height: 35px; padding: 10px;background-color: #e98300;width: 150px;" href="" (click)="showCustomAlert = false">OKAY</a>
+   <br><br>
+</p-dialog>

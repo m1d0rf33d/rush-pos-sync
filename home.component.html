@@ -1,0 +1,90 @@
+
+<div style="width: 100%;">
+    <nav class="navbar navbar-default" style="border-radius: 0px;position: fixed; z-index: 3; width: 100%;margin-left: -2px;marin-top: -2px;background-color: #333333; height: 30px;">
+        <div class="container-fluid" style="height: 100%;">
+            <div class="navbar-header" style="padding: 10px;">
+               <div style="font-variant: normal;font-family: 'Orbitron', sans-serif;font-size: 25;color: white;">
+           Rush POS Sync
+        </div>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar navbar-right" style="padding: 10px;">
+                    <li >
+                        <a style="color: white" href="#" (click)="logout()" >LOGOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper" >
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" style="margin-top: 49px;">
+            <ul class="sidebar-nav">
+                <li class="side-nav-li" [class.active]="step=='step1'" (click)="step='step1'">
+                     <div>
+                <div style="float: left;">
+                <i class="fa fa-building fa-2x" aria-hidden="true"></i>
+               </div>
+                  <div>
+                        <a [routerLink]="['merchants']">
+                          &nbsp;&nbsp;&nbsp;Merchant<br/>&nbsp;&nbsp;&nbsp;Settings
+                    </a>
+                  </div>
+               </div>
+                </li>
+               <li class="side-nav-li" [class.active]="step=='step2'" (click)="step='step2'">
+               <div>
+                <div style="float: left;">
+                <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+               </div>
+                  <div>
+                        <a [routerLink]="['accountsettings']">
+                          &nbsp;&nbsp;Accounts <br/>&nbsp;&nbsp;Settings
+                    </a>
+                  </div>
+               </div>
+                </li>
+                <li class="side-nav-li" [class.active]="step=='step3'" (click)="step='step3'">
+                        <div>
+                <div style="float: left;">
+                <i class="fa fa-lock fa-2x" aria-hidden="true"></i>
+               </div>
+                  <div>
+                        <a [routerLink]="['screenrestrictions']">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Screen <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Restrictions
+                    </a>
+                  </div>
+               </div>
+                </li>
+
+                <li class="side-nav-li" [class.active]="step=='step4'" (click)="step='step4'">
+                <div>
+                   <div style="float: left;">
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+               </div>
+                    <div>
+                        <a [routerLink]="['rolesettings']">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Role <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Settings
+                        </a>
+                    </div>
+                  
+               </div>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <br/><br/>
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <router-outlet></router-outlet>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+</div>
+
+

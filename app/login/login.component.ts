@@ -14,14 +14,37 @@ export class LoginComponent extends LoadingPage {
     invalidCredentials = false;
     msgs = [];
 
+
+    messageType = '';
+    message = '';
+    showCustomAlert = false;
+
+
     constructor (private authService: AuthService, private router: Router) {
         super(false);
     }
 
     login (event, username, password) {
-     
+         
         event.preventDefault();
-        this.authService.authenticate(username, password, this);
+        this.standby();
+        this.authService.authenticate(username, password)
+        .subscribe(
+            data => {
+              
+                if (data.access_token) {
+                    window.localStorage.setItem('auth_key', data.access_token);
+                    this.router.navigate(['index'])
+                }
+                this.loading = false;
+            },
+            error => { 
+                this.loading = false;
+                this.messageType = 'OOPS!';
+                this.message = 'Invalid credentials';
+                this.showCustomAlert = true;
+             
+            });
     }
 
 }

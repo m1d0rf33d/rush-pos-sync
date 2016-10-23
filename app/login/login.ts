@@ -5,10 +5,10 @@ import {LoginService} from '../login/login.service';
 import {CommonModule} from '@angular/common';
 import {LoadingContainer} from '../spinner/loading_container';
 import {MessagesModule} from 'primeng/primeng';
-
+import {DialogModule} from 'primeng/primeng';
 
 @NgModule({
-    imports: [CommonModule, MessagesModule],
+    imports: [CommonModule, MessagesModule, DialogModule],
     declarations: [LoadingContainer, LoginComponent ],
     providers: [LoginService]
 })

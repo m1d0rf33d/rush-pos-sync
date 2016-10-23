@@ -8,12 +8,10 @@ import {AppConfig} from '../config/AppConfig';
 
 @Injectable()
 export class AuthService {
-
     constructor (private http: Http, private router: Router) {
     }
 
-     authenticate (username, password, loginComponent) {
-        loginComponent.standby();
+     authenticate (username, password) {
         let body = '';
         let headers = new Headers();
         headers.append('Authorization', 'Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=');
@@ -23,24 +21,7 @@ export class AuthService {
         var url = AppConfig.RUSH_LOGIN_URL.replace(':username', username)
                                           .replace(':password', password);
        
-        this.http.post(url, body, options)
-        .subscribe(
-            data => {
-              
-                if (data.json().access_token) {
-                    window.localStorage.setItem('auth_key', data.json().access_token);
-                    this.router.navigate(['index'])
-                }
-                loginComponent.loading = false;
-            },
-            error => { 
-                loginComponent.loading = false;
-                setTimeout(function() {
-                       alert('Invalid credentials.') 
-                  
-                }, 200);
-             
-            });
+        return this.http.post(url, body, options).map((res: Response) => res.json());
     }
 }
  

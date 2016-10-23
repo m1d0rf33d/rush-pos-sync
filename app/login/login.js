@@ -15,12 +15,13 @@ var login_service_1 = require('../login/login.service');
 var common_1 = require('@angular/common');
 var loading_container_1 = require('../spinner/loading_container');
 var primeng_1 = require('primeng/primeng');
+var primeng_2 = require('primeng/primeng');
 var LoginModule = (function () {
     function LoginModule() {
     }
     LoginModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, primeng_1.MessagesModule],
+            imports: [common_1.CommonModule, primeng_1.MessagesModule, primeng_2.DialogModule],
             declarations: [loading_container_1.LoadingContainer, login_component_1.LoginComponent],
             providers: [login_service_1.LoginService]
         }), 

@@ -19,9 +19,7 @@ var AuthService = (function () {
         this.http = http;
         this.router = router;
     }
-    AuthService.prototype.authenticate = function (username, password, loginComponent) {
-        var _this = this;
-        loginComponent.standby();
+    AuthService.prototype.authenticate = function (username, password) {
         var body = '';
         var headers = new http_1.Headers();
         headers.append('Authorization', 'Basic Y2xpZW50SWRQYXNzd29yZDpzZWNyZXQ=');
@@ -29,19 +27,7 @@ var AuthService = (function () {
         var options = new http_1.RequestOptions({ headers: headers });
         var url = AppConfig_1.AppConfig.RUSH_LOGIN_URL.replace(':username', username)
             .replace(':password', password);
-        this.http.post(url, body, options)
-            .subscribe(function (data) {
-            if (data.json().access_token) {
-                window.localStorage.setItem('auth_key', data.json().access_token);
-                _this.router.navigate(['index']);
-            }
-            loginComponent.loading = false;
-        }, function (error) {
-            loginComponent.loading = false;
-            setTimeout(function () {
-                alert('Invalid credentials.');
-            }, 200);
-        });
+        return this.http.post(url, body, options).map(function (res) { return res.json(); });
     };
     AuthService = __decorate([
         core_1.Injectable(), 
