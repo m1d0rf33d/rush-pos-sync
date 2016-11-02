@@ -6,7 +6,7 @@ import {RoleService} from '../global/role.service';
 @Component({
     moduleId: module.id,
     selector: 'app-account-settings',
-    templateUrl: 'account-settings.html',
+    templateUrl: '/rush-pos-sync/account-settings.html',
     providers: [AccountSettingsService, MerchantService, RoleService]
 })
 

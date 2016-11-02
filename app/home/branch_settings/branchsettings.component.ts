@@ -4,7 +4,7 @@ import {BranchService} from '../../home/branch_settings/branchsettings.service';
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'branch-settings.html',
+    templateUrl: '/rush-pos-sync/branch-settings.html',
     providers: [MerchantService, BranchService]
 })
 
