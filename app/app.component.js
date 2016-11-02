@@ -16,7 +16,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             moduleId: module.id,
-            templateUrl: 'app.component.html'
+            templateUrl: '/rush-pos-sync/app.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

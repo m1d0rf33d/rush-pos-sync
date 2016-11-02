@@ -88,7 +88,7 @@ var AccountSettingsComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'app-account-settings',
-            templateUrl: 'account-settings.html',
+            templateUrl: '/rush-pos-sync/account-settings.html',
             providers: [accountsettings_service_1.AccountSettingsService, merchant_service_1.MerchantService, role_service_1.RoleService]
         }), 
         __metadata('design:paramtypes', [accountsettings_service_1.AccountSettingsService, merchant_service_1.MerchantService, role_service_1.RoleService])
