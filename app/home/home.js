@@ -20,13 +20,14 @@ var primeng_1 = require('primeng/primeng');
 var accountsettings_component_1 = require('../home/account_settings/accountsettings.component');
 var screenrestrictions_component_1 = require('../home/screen_restrictions/screenrestrictions.component');
 var rolesettings_component_1 = require('../home/role_settings/rolesettings.component');
+var branchsettings_component_1 = require('../home/branch_settings/branchsettings.component');
 var HomeModule = (function () {
     function HomeModule() {
     }
     HomeModule = __decorate([
         core_1.NgModule({
             imports: [routes_1.routing, common_1.CommonModule, forms_1.FormsModule, angular2_datatable_1.DataTableModule, primeng_1.DialogModule],
-            declarations: [home_component_1.HomeComponent, merchant_component_1.MerchantComponent, accountsettings_component_1.AccountSettingsComponent, screenrestrictions_component_1.ScreenRestrictionsComponent, rolesettings_component_1.RoleSettingsComponent],
+            declarations: [home_component_1.HomeComponent, merchant_component_1.MerchantComponent, accountsettings_component_1.AccountSettingsComponent, screenrestrictions_component_1.ScreenRestrictionsComponent, rolesettings_component_1.RoleSettingsComponent, branchsettings_component_1.BranchSettingsComponent],
             providers: [routes_1.appRoutingProviders]
         }), 
         __metadata('design:paramtypes', [])

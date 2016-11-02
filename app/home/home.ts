@@ -12,11 +12,11 @@ import {DialogModule} from 'primeng/primeng';
 import {AccountSettingsComponent} from '../home/account_settings/accountsettings.component';
 import {ScreenRestrictionsComponent} from '../home/screen_restrictions/screenrestrictions.component';
 import {RoleSettingsComponent} from '../home/role_settings/rolesettings.component';
-
+import {BranchSettingsComponent} from '../home/branch_settings/branchsettings.component';
 
 @NgModule({
     imports: [routing,CommonModule, FormsModule, DataTableModule, DialogModule],
-    declarations: [HomeComponent, MerchantComponent, AccountSettingsComponent, ScreenRestrictionsComponent, RoleSettingsComponent],
+    declarations: [HomeComponent, MerchantComponent, AccountSettingsComponent, ScreenRestrictionsComponent, RoleSettingsComponent, BranchSettingsComponent],
     providers: [appRoutingProviders]
 })
 

@@ -89,7 +89,7 @@ var ScreenRestrictionsComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'app-screen-restrictions',
-            templateUrl: '/rush-pos-sync/screen-restrictions.html',
+            templateUrl: 'screen-restrictions.html',
             providers: [merchant_service_1.MerchantService, screenrestrictions_service_1.ScreenRestrictionsService]
         }), 
         __metadata('design:paramtypes', [merchant_service_1.MerchantService, screenrestrictions_service_1.ScreenRestrictionsService])

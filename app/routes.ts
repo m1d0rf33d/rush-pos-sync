@@ -7,7 +7,7 @@ import {MerchantComponent} from './home/merchants/merchant.component';
 import {AccountSettingsComponent} from './home/account_settings/accountsettings.component';
 import {ScreenRestrictionsComponent} from './home/screen_restrictions/screenrestrictions.component';
 import {RoleSettingsComponent} from './home/role_settings/rolesettings.component';
-
+import {BranchSettingsComponent} from './home/branch_settings/branchsettings.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent },
@@ -20,7 +20,8 @@ const appRoutes: Routes = [
             {path: 'merchants', component: MerchantComponent},
             {path: 'accountsettings', component: AccountSettingsComponent},
             {path: 'screenrestrictions', component: ScreenRestrictionsComponent},
-            {path: 'rolesettings', component: RoleSettingsComponent}
+            {path: 'rolesettings', component: RoleSettingsComponent},
+            {path: 'branchsettings', component: BranchSettingsComponent}
     ]}]
 export const appRoutingProviders: any[] = [
 

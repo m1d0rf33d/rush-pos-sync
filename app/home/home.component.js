@@ -41,7 +41,7 @@ var HomeComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'app-home',
-            templateUrl: '/rush-pos-sync/home.component.html',
+            templateUrl: 'home.component.html',
             providers: [auth_service_1.AuthService]
         }), 
         __metadata('design:paramtypes', [router_1.Router])

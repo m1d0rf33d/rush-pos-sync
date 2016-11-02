@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Component({
     moduleId: module.id,
     selector: 'app-home',
-    templateUrl: '/rush-pos-sync/home.component.html',
+    templateUrl: 'home.component.html',
     providers: [AuthService]
 })
 
