@@ -74,7 +74,7 @@ var AppConfig = (function () {
     });
     Object.defineProperty(AppConfig, "UPDATE_BRANCH_URL", {
         get: function () {
-            return 'http://52.74.190.173:8080/rush-pos-sync/api/merchant/branch/:branchId';
+            return 'http://52.74.190.173:8080/rush-pos-sync/api/merchant/branch';
         },
         enumerable: true,
         configurable: true
