@@ -8,6 +8,7 @@ import {AccountSettingsComponent} from './home/account_settings/accountsettings.
 import {ScreenRestrictionsComponent} from './home/screen_restrictions/screenrestrictions.component';
 import {RoleSettingsComponent} from './home/role_settings/rolesettings.component';
 import {BranchSettingsComponent} from './home/branch_settings/branchsettings.component';
+import {UpdatesComponent} from './home/updates/updates.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent },
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
             {path: 'accountsettings', component: AccountSettingsComponent},
             {path: 'screenrestrictions', component: ScreenRestrictionsComponent},
             {path: 'rolesettings', component: RoleSettingsComponent},
-            {path: 'branchsettings', component: BranchSettingsComponent}
+            {path: 'branchsettings', component: BranchSettingsComponent},
+            {path: 'updates', component: UpdatesComponent}
     ]}]
 export const appRoutingProviders: any[] = [
 

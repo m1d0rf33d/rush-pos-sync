@@ -5,7 +5,7 @@ import {ScreenRestrictionsService} from '../../home/screen_restrictions/screenre
 @Component({
     moduleId: module.id,
     selector: 'app-screen-restrictions',
-    templateUrl: '/rush-pos-sync/screen-restrictions.html',
+    templateUrl: '/screen-restrictions.html',
     providers: [MerchantService, ScreenRestrictionsService]
 })
 export class ScreenRestrictionsComponent {

@@ -78,7 +78,7 @@ var BranchSettingsComponent = (function () {
     BranchSettingsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: '/rush-pos-sync/branch-settings.html',
+            templateUrl: '/branch-settings.html',
             providers: [merchant_service_1.MerchantService, branchsettings_service_1.BranchService]
         }), 
         __metadata('design:paramtypes', [merchant_service_1.MerchantService, branchsettings_service_1.BranchService])

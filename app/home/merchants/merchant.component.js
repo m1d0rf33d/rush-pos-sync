@@ -134,7 +134,7 @@ var MerchantComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'app-merchants',
-            templateUrl: '/rush-pos-sync/merchant.html',
+            templateUrl: '/merchant.html',
             providers: [merchant_service_1.MerchantService]
         }), 
         __metadata('design:paramtypes', [merchant_service_1.MerchantService])

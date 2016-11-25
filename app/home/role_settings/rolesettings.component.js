@@ -132,7 +132,7 @@ var RoleSettingsComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'app-rolesettings',
-            templateUrl: '/rush-pos-sync/role-settings.html',
+            templateUrl: '/role-settings.html',
             providers: [merchant_service_1.MerchantService, role_service_1.RoleService]
         }), 
         __metadata('design:paramtypes', [merchant_service_1.MerchantService, role_service_1.RoleService])

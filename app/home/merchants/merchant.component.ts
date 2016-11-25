@@ -5,7 +5,7 @@ import {Http, Headers, Response} from '@angular/http';
 @Component({
     moduleId: module.id,
     selector: 'app-merchants',
-    templateUrl: '/rush-pos-sync/merchant.html',
+    templateUrl: '/merchant.html',
     providers:[MerchantService]
 })
 

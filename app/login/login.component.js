@@ -50,9 +50,9 @@ var LoginComponent = (function (_super) {
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'app-login',
-            templateUrl: '/rush-pos-sync/login.component.html',
+            templateUrl: '/login.component.html',
             moduleId: module.id,
-            styleUrls: ['/rush-pos-sync/login.component.css']
+            styleUrls: ['/login.component.css']
         }), 
         __metadata('design:paramtypes', [auth_service_1.AuthService, router_1.Router])
     ], LoginComponent);

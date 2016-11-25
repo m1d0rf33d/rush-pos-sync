@@ -8,6 +8,7 @@ var accountsettings_component_1 = require('./home/account_settings/accountsettin
 var screenrestrictions_component_1 = require('./home/screen_restrictions/screenrestrictions.component');
 var rolesettings_component_1 = require('./home/role_settings/rolesettings.component');
 var branchsettings_component_1 = require('./home/branch_settings/branchsettings.component');
+var updates_component_1 = require('./home/updates/updates.component');
 var appRoutes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: 'index',
@@ -20,7 +21,8 @@ var appRoutes = [
             { path: 'accountsettings', component: accountsettings_component_1.AccountSettingsComponent },
             { path: 'screenrestrictions', component: screenrestrictions_component_1.ScreenRestrictionsComponent },
             { path: 'rolesettings', component: rolesettings_component_1.RoleSettingsComponent },
-            { path: 'branchsettings', component: branchsettings_component_1.BranchSettingsComponent }
+            { path: 'branchsettings', component: branchsettings_component_1.BranchSettingsComponent },
+            { path: 'updates', component: updates_component_1.UpdatesComponent }
         ] }];
 exports.appRoutingProviders = [];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);
